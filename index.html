@@ -1,273 +1,135 @@
-<!DOCPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SHWE-PAY | The Future of Solana Payments</title>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SHWE-PAY | Solana Payment Token</title>
-  <style>
-    body { margin: 0; font-family: Arial, sans-serif; background: #0b0f19; color: #ffffff; line-height: 1.6; scroll-behavior: smooth; }
-    header { padding: 80px 20px; text-align: center; background: linear-gradient(135deg, #7f5af0, #2cb67d); }
-    section { padding: 60px 20px; max-width: 1100px; margin: auto; }
-    .card { background: #161b2e; padding: 25px; border-radius: 12px; margin-bottom: 20px; text-align: center; }
-    .btn { display: inline-block; margin: 10px; padding: 14px 30px; background: #ffffff; color: #0b0f19; border-radius: 30px; text-decoration: none; font-weight: bold; cursor: pointer; border: none; }
-    .btn-outline { background: transparent; border: 2px solid #ffffff; color: #ffffff; }
-    footer { background: #070a12; padding: 50px 20px; text-align: center; }
-    .social-link { margin: 0 15px; display: inline-block; vertical-align: middle; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHWE-PAY | Official Whitepaper & Ecosystem</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #050810; color: #e2e8f0; }
+        .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .gradient-text { background: linear-gradient(135deg, #a78bfa, #34d399); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-gradient { background: radial-gradient(circle at top, rgba(127, 90, 240, 0.15) 0%, transparent 70%); }
+        .card-hover:hover { transform: translateY(-5px); border-color: rgba(167, 139, 250, 0.4); transition: all 0.3s ease; }
+    </style>
 </head>
 <body>
 
-<header>
-  <h1>SHWE-PAY</h1>
-  <p>Fast, secure, and low-fee digital payments powered by the Solana blockchain.</p>
-  <div style="margin-top: 25px;">
-    <a href="#how-to-buy" class="btn">How to Buy</a>
-    <a href="https://dexscreener.com/solana/AFBuHorDPnseM2NQNrmFtPBaJUYuKNHksTJw4nfpyeQW" target="_blank" class="btn btn-outline">View Live Chart</a>
-  </div>
-</header>
+    <nav class="fixed w-full z-50 glass py-4 px-6 flex justify-between items-center">
+        <div class="text-2xl font-extrabold gradient-text">$SHWE PAY</div>
+        <div class="hidden md:flex space-x-8 font-semibold">
+            <a href="#about" class="hover:text-purple-400 transition">About</a>
+            <a href="#tokenomics" class="hover:text-purple-400 transition">Tokenomics</a>
+            <a href="#roadmap" class="hover:text-purple-400 transition">Roadmap</a>
+        </div>
+        <a href="https://t.me/boost/SHWE_PAY_Official" target="_blank" class="bg-purple-600 hover:bg-purple-700 px-6 py-2 rounded-full font-bold transition shadow-lg shadow-purple-500/20">Join Community</a>
+    </nav>
 
-<section id="contract-address">
-  <div class="card" style="border: 1px solid #7f5af0;">
-    <p style="color: #9aa4bf;">Official Contract Address</p>
-    <code style="display: block; margin: 10px 0; color: #2cb67d; word-break: break-all;">AFBuHorDPnseM2NQNrmFtPBaJUYuKNHksTJw4nfpyeQW</code>
-    <button onclick="navigator.clipboard.writeText('AFBuHorDPnseM2NQNrmFtPBaJUYuKNHksTJw4nfpyeQW'); alert('Copied!')" class="btn" style="padding: 8px 20px;">Copy Address</button>
-  </div>
-</section>
+    <section class="hero-gradient pt-40 pb-20 px-6 text-center">
+        <span class="bg-purple-500/10 text-purple-400 px-4 py-1 rounded-full text-sm font-bold border border-purple-500/20 mb-6 inline-block">Official Whitepaper v1.0</span>
+        <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">Invest in the <span class="gradient-text">Myanmar Gold</span> Digital Era</h1>
+        <p class="max-w-3xl mx-auto text-gray-400 text-lg mb-10 leading-relaxed">မြန်ဆန်၍ အခကြေးငွေ သက်သာသော ငွေပေးချေမှုစနစ်နှင့် ရေရှည်ရင်းနှီးမြှုပ်နှံသူများအတွက် ခိုင်မာသော စတော့ရှယ်ယာပုံစံ (Stock Investment) အခွင့်အလမ်း။</p>
+        
+        <div class="max-w-2xl mx-auto glass p-2 rounded-2xl flex flex-col md:flex-row items-center gap-4">
+            <div class="px-4 py-2 text-left flex-1">
+                <p class="text-xs text-gray-500 uppercase font-bold">Official Token Address (CA)</p>
+                <code class="text-green-400 text-sm break-all">AFBuHorDPnsaM2MQfIrmPtPBs3UYuKfiHksTJe4nfpueQw</code>
+            </div>
+            <button onclick="navigator.clipboard.writeText('AFBuHorDPnsaM2MQfIrmPtPBs3UYuKfiHksTJe4nfpueQw'); alert('CA Copied!')" class="w-full md:w-auto bg-white/10 hover:bg-white/20 px-6 py-4 rounded-xl font-bold transition">Copy CA</button>
+        </div>
+    </section>
 
-<section id="how-to-buy">
-  <h2>How to Buy</h2>
-  <div class="card">
-    <p>1. Create a Wallet (Phantom or Solflare)</p>
-    <p>2. Send SOL to your wallet</p>
-    <p>3. Swap SOL for SHWE-PAY on Raydium or Jupiter</p>
-  </div>
-</section>
+    <section id="about" class="py-20 px-6">
+        <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-3xl font-bold mb-6 italic border-l-4 border-purple-500 pl-4">စီမံကိန်း အကျဉ်းချုပ်</h2>
+                <p class="text-gray-400 mb-6 leading-relaxed">$SHWE PAY သည် Solana Blockchain ကို အခြေခံထားသော မြန်မာ့ဦးဆောင် Digital Payment နှင့် Investment Token တစ်ခုဖြစ်သည်။ ရရှိလာသော ရန်ပုံငွေများကို လုပ်ငန်းတိုးချဲ့မှုနှင့် Liquidity ခိုင်မာစေရန် အသုံးပြုမည်ဖြစ်ပြီး Holders များအတွက် အကျိုးအမြတ်ခွဲဝေမှုစနစ်များ ပါဝင်မည်ဖြစ်သည်။</p>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="glass p-4 rounded-xl">
+                        <p class="text-2xl font-bold text-white">1,000 SOL</p>
+                        <p class="text-xs text-gray-500">Target Fundraising</p>
+                    </div>
+                    <div class="glass p-4 rounded-xl">
+                        <p class="text-2xl font-bold text-white">Dividends</p>
+                        <p class="text-xs text-gray-500">Holders Profit Sharing</p>
+                    </div>
+                </div>
+            </div>
+            <div class="glass p-8 rounded-3xl border-purple-500/20">
+                <h3 class="text-xl font-bold mb-4 text-purple-400"><i class="fas fa-wallet mr-2"></i> Fundraising Wallet</h3>
+                <p class="text-sm text-gray-400 mb-4">ရင်းနှီးမြှုပ်နှံရန်အတွက် အောက်ပါ SOL Wallet သို့ ပေးပို့နိုင်ပါသည်။</p>
+                <div class="bg-black/40 p-4 rounded-xl border border-white/5 break-all font-mono text-sm text-yellow-500 mb-4">
+                    7YBqjiP6M5BqA7P6P9L3L3L3L3L3L3L3L3L3L3L6SJyuD
+                </div>
+                <button onclick="navigator.clipboard.writeText('7YBqjiP6M5BqA7P6P9L3L3L3L3L3L3L3L3L3L3L6SJyuD'); alert('Wallet Copied!')" class="w-full bg-purple-600 py-3 rounded-xl font-bold">Copy Wallet Address</button>
+            </div>
+        </div>
+    </section>
 
-<footer id="footer">
-  <div style="margin-bottom: 30px;">
-    <a href="https://x.com/DavidGwa168323" target="_blank" class="social-link">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-    </a>
-    <a href="https://t.me/SHWE_PAY_Official/1" target="_blank" class="social-link">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M11.944 0C5.346 0 0 5.346 0 11.944c0 6.598 5.346 11.944 11.944 11.944 6.598 0 11.944-5.346 11.944-11.944C23.888 5.346 18.542 0 11.944 0zm5.835 8.169l-1.957 9.228c-.148.651-.534.812-1.079.506l-3.003-2.213-1.448 1.393c-.161.161-.295.295-.605.295l.214-3.053 5.556-5.019c.241-.214-.053-.333-.374-.121l-6.868 4.324-2.96-.925c-.643-.201-.655-.643.134-.951l11.565-4.455c.535-.195.998.127.821.99z"/></svg>
-    </a>
-  </div>
-  <p style="color: #9aa4bf;">&copy; 2026 SHWE-PAY Ecosystem. Built on Solana.</p>
-</footer>
+    <section id="tokenomics" class="py-20 px-6 bg-white/[0.02]">
+        <h2 class="text-4xl font-bold text-center mb-16">Tokenomics</h2>
+        <div class="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            <div class="glass p-6 rounded-2xl card-hover">
+                <p class="text-gray-500 text-sm font-bold uppercase mb-2">Total Supply</p>
+                <p class="text-2xl font-bold">1,001,000,000</p>
+            </div>
+            <div class="glass p-6 rounded-2xl card-hover">
+                <p class="text-gray-500 text-sm font-bold uppercase mb-2">Symbol</p>
+                <p class="text-2xl font-bold text-purple-400">$SHWE</p>
+            </div>
+            <div class="glass p-6 rounded-2xl card-hover">
+                <p class="text-gray-500 text-sm font-bold uppercase mb-2">Liquidity Fee</p>
+                <p class="text-2xl font-bold text-green-400">0.25%</p>
+            </div>
+            <div class="glass p-6 rounded-2xl card-hover">
+                <p class="text-gray-500 text-sm font-bold uppercase mb-2">Security</p>
+                <p class="text-xl font-bold">Mint Authority Revoked</p>
+            </div>
+        </div>
+    </section>
 
-</body>
-</html>  
-  <meta name="description" content="SHWE-PAY (SHWE) is a high-speed, low-fee payment utility token built on the Solana blockchain." />
-  <meta property="og:title" content="SHWE-PAY | Solana Payment Token">
-  <meta property="og:description" content="Fast, secure, and low-fee digital payments.">
-  <meta property="og:type" content="website">TY
-  <meta name="twitter:card" content="summary_large_image">
+    <section id="roadmap" class="py-20 px-6">
+        <h2 class="text-4xl font-bold text-center mb-16">Roadmap 2026 - 2030</h2>
+        <div class="max-w-4xl mx-auto space-y-8 relative">
+            <div class="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-800"></div>
+            
+            <div class="relative pl-12">
+                <div class="absolute left-0 top-0 w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center font-bold">1</div>
+                <h3 class="text-xl font-bold text-purple-400">Phase 1: Foundation (Q3 2026)</h3>
+                <p class="text-gray-400 mt-2">Solana Mainnet Launch, Liquidity Pool setup, and Mint Authority closure for maximum security.</p>
+            </div>
 
-  <style>
-    :root {
-      --primary: #7f5af0;
-      --secondary: #2cb67d;
-      --bg: #0b0f19;
-      --card-bg: #161b2e;
-      --text: #fffffe;
-      --text-dim: #9aa4bf;
-    }
+            <div class="relative pl-12">
+                <div class="absolute left-0 top-0 w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center font-bold text-gray-500">2</div>
+                <h3 class="text-xl font-bold">Phase 2: Growth & Funding (Q1 2027)</h3>
+                <p class="text-gray-400 mt-2">1,000 SOL Fundraising Campaign and Stock Investment integration for holders.</p>
+            </div>
 
-    body {
-      margin: 0;
-      font-family: 'Inter', Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      scroll-behavior: smooth;
-    }
+            <div class="relative pl-12">
+                <div class="absolute left-0 top-0 w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center font-bold text-gray-500">3</div>
+                <h3 class="text-xl font-bold">Phase 3: Utility (Q3 2029)</h3>
+                <p class="text-gray-400 mt-2">Merchant partnerships in Myanmar, Mobile App Beta launch, and Dividend payouts start.</p>
+            </div>
 
-    header {
-      padding: 120px 20px;
-      text-align: center;
-      background: radial-gradient(circle at top, #232946, #0b0f19);
-      border-bottom: 1px solid #2a2f45;
-    }
+            <div class="relative pl-12">
+                <div class="absolute left-0 top-0 w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center font-bold text-gray-500">4</div>
+                <h3 class="text-xl font-bold text-green-400">Phase 4: Ecosystem (Q2 2030)</h3>
+                <p class="text-gray-400 mt-2">Token Burn mechanism to increase value and nationwide digital payment implementation.</p>
+            </div>
+        </div>
+    </section>
 
-    .brand-glow {
-      color: var(--secondary);
-      text-shadow: 0 0 15px rgba(44, 182, 125, 0.5);
-      font-size: 4rem;
-      margin: 0;
-    }
-
-    section {
-      padding: 80px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    h2 {
-      color: var(--primary);
-      font-size: 2.5rem;
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-    }
-
-    .card {
-      background: var(--card-bg);
-      padding: 30px;
-      border-radius: 16px;
-      border: 1px solid #2a2f45;
-      transition: all 0.3s ease;
-    }
-
-    .card:hover {
-      border-color: var(--primary);
-      transform: translateY(-10px);
-    }
-
-    /* Contract Address Styling */
-    .ca-box {
-      background: rgba(127, 90, 240, 0.1);
-      border: 1px dashed var(--primary);
-      padding: 20px;
-      border-radius: 12px;
-      word-break: break-all;
-      margin: 20px auto;
-      max-width: 600px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 16px 35px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-      margin: 10px;
-    }
-
-    .btn-main { background: var(--primary); color: white; }
-    .btn-main:hover { background: #6b46e5; box-shadow: 0 0 20px rgba(127, 90, 240, 0.4); }
-
-    .btn-outline { border: 2px solid var(--text); color: var(--text); }
-    .btn-outline:hover { background: var(--text); color: var(--bg); }
-
-    /* Tokenomics Chart */
-    .token-bar {
-      height: 25px;
-      width: 100%;
-      background: #2a2f45;
-      border-radius: 50px;
-      display: flex;
-      overflow: hidden;
-      margin: 20px 0;
-    }
-
-    footer {
-      background: #070a12;
-      padding: 60px 20px;
-      text-align: center;
-      border-top: 1px solid #2a2f45;
-    }
-
-    .social-link {
-      margin: 0 15px;
-      transition: 0.3s;
-    }
-
-    .social-link:hover { opacity: 0.7; transform: scale(1.1); }
-  </style>
-</head>
-<body>
-
-<header>
-  <h1 class="brand-glow">SHWE-PAY</h1>
-  <p style="font-size: 1.4rem; color: var(--text-dim); margin-bottom: 30px;">The Premier Utility Token for the Solana Economy.</p>
-  <div class="ca-box">
-    <span style="color: var(--text-dim); font-size: 0.8rem; text-transform: uppercase;">Contract Address</span><br>
-    <code id="ca" style="color: var(--secondary); font-size: 1.1rem;">AFBuHorDPnseM2NQNrmFtPBaJUYuKNHksTJw4nfpyeQW</code>
-    <br>
-    <button onclick="copyCA()" style="background: none; border: 1px solid var(--secondary); color: var(--secondary); padding: 5px 15px; border-radius: 5px; cursor: pointer; margin-top: 10px;">Copy CA</button>
-  </div>
-  <div style="margin-top: 30px;">
-    <a href="https://dexscreener.com/solana/AFBuHorDPnseM2NQNrmFtPBaJUYuKNHksTJw4nfpyeQW" target="_blank" class="btn btn-main">Live Chart</a>
-    <a href="#how-to-buy" class="btn btn-outline">Buy SHWE</a>
-  </div>
-</header>
-
-<section id="tokenomics">
-  <h2>Tokenomics</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Supply Details</h3>
-      <p>Total Supply: 1,000,000,000 SHWE</p>
-      <p>Tax: 0% Buy / 0% Sell</p>
-      <p>Liquidity: Burnt / Locked</p>
-    </div>
-    <div class="card">
-      <h3>Distribution</h3>
-      <div class="token-bar">
-        <div style="width: 80%; background: var(--primary);" title="Liquidity Pool"></div>
-        <div style="width: 10%; background: var(--secondary);" title="Marketing"></div>
-        <div style="width: 10%; background: #f9f9f9;" title="Development"></div>
-      </div>
-      <p><span style="color:var(--primary)">●</span> 80% Liquidity & Community</p>
-      <p><span style="color:var(--secondary)">●</span> 10% Marketing</p>
-      <p><span style="color:#f9f9f9;">●</span> 10% Ecosystem Growth</p>
-    </div>
-  </div>
-</section>
-
-<section id="how-to-buy">
-  <h2>Quick Start Guide</h2>
-  <div class="grid">
-    <div class="card">
-      <h3 style="color: var(--secondary);">01. Create Wallet</h3>
-      <p>Download Phantom or Solflare. Secure your seed phrase.</p>
-    </div>
-    <div class="card">
-      <h3 style="color: var(--secondary);">02. Load SOL</h3>
-      <p>Transfer SOL from any exchange (Binance, Coinbase, Kraken) to your wallet.</p>
-    </div>
-    <div class="card">
-      <h3 style="color: var(--secondary);">03. Final Swap</h3>
-      <p>Visit Jupiter or Raydium, paste the CA, and swap SOL for SHWE-PAY.</p>
-    </div>
-  </div>
-</section>
-
-<footer<meta property="og:title" content="SHWE-PAY | Solana Payment Token">
-<meta property="og:description" content="Fast, secure, and low-fee payments on Solana.">
-<meta property="og:image" content="link-to-your-logo.png">
-<meta name="twitter:card" content="summary_large_image">>
-  <div style="margin-bottom: 30px;">
-    <a href="https://x.com/DavidGwa168323" target="_blank" class="social-link">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-    </a>
-    <a href="https://t.me/SHWE_PAY_Official/1" target="_blank" class="social-link">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M11.944 0C5.346 0 0 5.346 0 11.944c0 6.598 5.346 11.944 11.944 11.944 6.598 0 11.944-5.346 11.944-11.944C23.888 5.346 18.542 0 11.944 0zm5.835 8.169l-1.957 9.228c-.148.651-.534.812-1.079.506l-3.003-2.213-1.448 1.393c-.161.161-.295.295-.605.295l.214-3.053 5.556-5.019c.241-.214-.053-.333-.374-.121l-6.868 4.324-2.96-.925c-.643-.201-.655-.643.134-.951l11.565-4.455c.535-.195.998.127.821.99z"/></svg>
-    </a>
-  </div>
-  <p style="color: var(--text-dim);">&copy; 2026 SHWE-PAY Ecosystem. Built on Solana.</p>
-</footer>
-
-<script>
-  function copyCA() {
-    const ca = "AFBuHorDPnseM2NQNrmFtPBaJUYuKNHksTJw4nfpyeQW";
-    navigator.clipboard.writeText(ca).then(() => {
-      alert("Contract Address Copied!");
-    });
-  }
-</script>
+    <footer class="py-20 px-6 border-t border-white/5 text-center">
+        <h2 class="text-2xl font-bold mb-8">Join the Revolution</h2>
+        <div class="flex justify-center space-x-8 mb-12">
+            <a href="https://t.me/boost/SHWE_PAY_Official" target="_blank" class="text-4xl hover:text-purple-400 transition hover:scale-110 block"><i class="fab fa-telegram"></i></a>
+            <a href="https://www.facebook.com/share/1DaBL3kiNX/" target="_blank" class="text-4xl hover:text-blue-500 transition hover:scale-110 block"><i class="fab fa-facebook"></i></a>
+            <a href="https://x.com/DavidGwa168323" target="_blank" class="text-4xl hover:text-white transition hover:scale-110 block"><i class="fab fa-x-twitter"></i></a>
+        </div>
+        <p class="text-gray-500 text-sm">© 2026 SHWE-PAY Ecosystem. Built with Security & Transparency on Solana.</p>
+    </footer>
 
 </body>
 </html>
