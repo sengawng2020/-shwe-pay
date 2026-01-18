@@ -4,32 +4,180 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SHWE-PAY | Dual Language Whitepaper</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="SHWE-PAY: Myanmar's leading digital payment token on Solana Blockchain. Secure, low-fee digital payments and stock investment opportunities for long-term holders.">
+    <meta name="keywords" content="SHWE-PAY, Myanmar cryptocurrency, Solana token, digital payment Myanmar, blockchain investment, $SHWE token">
+    <meta name="author" content="SHWE-PAY Ecosystem">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="SHWE-PAY | Invest in Myanmar Digital Era">
+    <meta property="og:description" content="Secure, low-fee digital payments and stock investment opportunities for long-term holders on the Solana Blockchain.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sengawng2020.github.io/-shwe-pay/">
+    <meta property="og:image" content="https://sengawng2020.github.io/-shwe-pay/og-image.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SHWE-PAY | Invest in Myanmar Digital Era">
+    <meta name="twitter:description" content="Secure, low-fee digital payments and stock investment opportunities on Solana Blockchain.">
+    <meta name="twitter:image" content="https://sengawng2020.github.io/-shwe-pay/og-image.png">
+    
+    <!-- Preconnect to external resources for better performance -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* Font Imports */
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Padauk:wght@400;700&display=swap');
-        body { font-family: 'Plus Jakarta Sans', 'Padauk', sans-serif; background-color: #03060c; color: #e2e8f0; scroll-behavior: smooth; }
-        .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.08); }
-        .gradient-text { background: linear-gradient(135deg, #a78bfa, #34d399); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .lang-active { background: #7c3aed; color: white; border-color: #7c3aed; }
-        [lang="my"] { display: none; } /* Hidden by default */
+        
+        /* CSS Custom Properties (Root Variables) */
+        :root {
+            --color-primary: #7c3aed;
+            --color-primary-hover: #6d28d9;
+            --color-secondary: #34d399;
+            --color-accent: #a78bfa;
+            --color-yellow: #eab308;
+            --color-background: #03060c;
+            --color-text-primary: #e2e8f0;
+            --color-text-secondary: #94a3b8;
+            --transition-speed: 0.3s;
+            --glass-background: rgba(255, 255, 255, 0.02);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --border-radius-sm: 0.5rem;
+            --border-radius-md: 1rem;
+            --border-radius-lg: 1.5rem;
+            --border-radius-xl: 2rem;
+        }
+        
+        /* Base Styles */
+        body { 
+            font-family: 'Plus Jakarta Sans', 'Padauk', sans-serif; 
+            background-color: var(--color-background); 
+            color: var(--color-text-primary); 
+            scroll-behavior: smooth;
+        }
+        
+        /* Glass Morphism Effect */
+        .glass { 
+            background: var(--glass-background); 
+            backdrop-filter: blur(15px); 
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            will-change: transform;
+        }
+        
+        /* Responsive Glass Morphism for smaller screens */
+        @media (max-width: 768px) {
+            .glass {
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+            }
+        }
+        
+        /* Gradient Text Effect */
+        .gradient-text { 
+            background: linear-gradient(135deg, var(--color-accent), var(--color-secondary)); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Language Toggle Active State */
+        .lang-active { 
+            background: var(--color-primary); 
+            color: white; 
+            border-color: var(--color-primary);
+        }
+        
+        /* Language Display Control - Hidden by default */
+        [lang="my"] { display: none; }
+        
+        /* Skip to Content Link - Accessibility */
+        .skip-to-content {
+            position: absolute;
+            top: -100px;
+            left: 0;
+            background: var(--color-primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: var(--border-radius-sm);
+            z-index: 100;
+            transition: top var(--transition-speed);
+        }
+        
+        .skip-to-content:focus {
+            top: 0.5rem;
+            left: 0.5rem;
+        }
+        
+        /* Toast Notification Styles */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: rgba(16, 185, 129, 0.95);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            opacity: 0;
+            transform: translateY(100px);
+            transition: all var(--transition-speed) ease-out;
+            z-index: 1000;
+            pointer-events: none;
+        }
+        
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        
+        /* Responsive Typography */
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 2.5rem !important;
+            }
+            h2 {
+                font-size: 2rem !important;
+            }
+        }
+        
+        /* Smooth Transitions */
+        button, a {
+            transition: all var(--transition-speed) ease;
+        }
     </style>
 </head>
 <body>
+    <!-- Skip to Content Link for Accessibility -->
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
 
-    <nav class="fixed w-full z-50 glass py-4 px-6 flex justify-between items-center">
+    <!-- Main Navigation -->
+    <nav class="fixed w-full z-50 glass py-4 px-6 flex justify-between items-center" role="navigation" aria-label="Main navigation">
         <div class="text-2xl font-extrabold gradient-text">$SHWE PAY</div>
         
         <div class="flex items-center gap-4">
-            <div class="flex border border-gray-700 rounded-lg overflow-hidden text-xs font-bold">
-                <button onclick="setLanguage('en')" id="btn-en" class="px-3 py-1 lang-active transition">EN</button>
-                <button onclick="setLanguage('my')" id="btn-my" class="px-3 py-1 hover:bg-gray-800 transition">မြန်မာ</button>
+            <!-- Language Toggle with Accessibility -->
+            <div class="flex border border-gray-700 rounded-lg overflow-hidden text-xs font-bold" role="group" aria-label="Language selector">
+                <button onclick="setLanguage('en')" id="btn-en" class="px-3 py-1 lang-active transition" aria-pressed="true" aria-label="Switch to English">EN</button>
+                <button onclick="setLanguage('my')" id="btn-my" class="px-3 py-1 hover:bg-gray-800 transition" aria-pressed="false" aria-label="Switch to Myanmar">မြန်မာ</button>
             </div>
-            <a href="https://t.me/boost/SHWE_PAY_Official" target="_blank" class="hidden md:block bg-purple-600 hover:bg-purple-700 px-5 py-2 rounded-full font-bold transition text-xs shadow-lg shadow-purple-600/20">Join Community</a>
+            <a href="https://t.me/boost/SHWE_PAY_Official" target="_blank" rel="noopener noreferrer" class="hidden md:block bg-purple-600 hover:bg-purple-700 px-5 py-2 rounded-full font-bold transition text-xs shadow-lg shadow-purple-600/20" aria-label="Join our Telegram community">Join Community</a>
         </div>
     </nav>
 
-    <section class="pt-40 pb-20 px-6 text-center">
+    <!-- Hero Section -->
+    <section id="main-content" class="pt-40 pb-20 px-6 text-center">
         <span class="bg-purple-500/10 text-purple-400 px-4 py-1 rounded-full text-xs font-bold border border-purple-500/20 mb-6 inline-block uppercase tracking-wider">Official Whitepaper</span>
         
         <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight leading-tight">
@@ -42,21 +190,24 @@
             <span lang="my">Solana Blockchain ပေါ်တွင် အခြေခံထားပြီး မြန်ဆန်၍ အခကြေးငွေ သက်သာသော ငွေပေးချေမှုစနစ်နှင့် စတော့ရှယ်ယာပုံစံ ရေရှည်ရင်းနှီးမြှုပ်နှံမှု အခွင့်အလမ်းများ။</span>
         </p>
         
+        <!-- Token Address Copy Section -->
         <div class="max-w-2xl mx-auto glass p-2 rounded-2xl flex flex-col md:flex-row items-center gap-4 mb-10">
             <div class="px-4 py-2 text-left flex-1 w-full">
                 <p class="text-[10px] text-gray-500 uppercase font-bold mb-1">Official Token Address (CA)</p>
-                <code class="text-green-400 text-xs md:text-sm font-mono break-all">AFBuHorDPnsaM2MQfIrmPtPBs3UYuKfiHksTJe4nfpueQw</code>
+                <code class="text-green-400 text-xs md:text-sm font-mono break-all" aria-label="Token contract address">AFBuHorDPnsaM2MQfIrmPtPBs3UYuKfiHksTJe4nfpueQw</code>
             </div>
-            <button onclick="navigator.clipboard.writeText('AFBuHorDPnsaM2MQfIrmPtPBs3UYuKfiHksTJe4nfpueQw'); alert('CA Copied!')" class="w-full md:w-auto bg-white/10 hover:bg-white/20 px-6 py-4 rounded-xl font-bold transition flex items-center justify-center gap-2">
-                <i class="fas fa-copy"></i> Copy CA
+            <button onclick="copyToClipboard('AFBuHorDPnsaM2MQfIrmPtPBs3UYuKfiHksTJe4nfpueQw', 'CA Copied!')" class="w-full md:w-auto bg-white/10 hover:bg-white/20 px-6 py-4 rounded-xl font-bold transition flex items-center justify-center gap-2" aria-label="Copy contract address to clipboard">
+                <i class="fas fa-copy" aria-hidden="true"></i> Copy CA
             </button>
         </div>
     </section>
 
+    <!-- Project Overview and Fundraising Section -->
     <section class="py-10 px-6 max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
+        <!-- Project Overview Card -->
         <div class="glass p-8 rounded-3xl border-purple-500/20 shadow-2xl">
             <h3 class="text-2xl font-bold mb-4 text-purple-400 flex items-center gap-3">
-                <i class="fas fa-project-diagram"></i> 
+                <i class="fas fa-project-diagram" aria-hidden="true"></i> 
                 <span lang="en">Project Overview</span><span lang="my">စီမံကိန်း အကျဉ်းချုပ်</span>
             </h3>
             <p class="text-gray-400 leading-relaxed text-sm">
@@ -75,24 +226,26 @@
             </div>
         </div>
 
+        <!-- Fundraising Wallet Card -->
         <div class="glass p-8 rounded-3xl border-yellow-500/20 shadow-2xl">
             <h3 class="text-2xl font-bold mb-4 text-yellow-500 flex items-center gap-3">
-                <i class="fas fa-coins"></i> 
+                <i class="fas fa-coins" aria-hidden="true"></i> 
                 <span lang="en">Fundraising Wallet</span><span lang="my">ရင်းနှီးမြှုပ်နှံရန် Wallet</span>
             </h3>
             <p class="text-xs text-gray-400 mb-4 italic">
                 <span lang="en">Send SOL to the address below to participate in the fundraising.</span>
                 <span lang="my">ရင်းနှီးမြှုပ်နှံမှုတွင် ပါဝင်ရန် အောက်ပါ SOL Wallet သို့ ပေးပို့နိုင်ပါသည်။</span>
             </p>
-            <div class="bg-black/60 p-4 rounded-xl border border-white/5 break-all font-mono text-xs text-yellow-400 mb-6">
+            <div class="bg-black/60 p-4 rounded-xl border border-white/5 break-all font-mono text-xs text-yellow-400 mb-6" aria-label="Fundraising wallet address">
                 7YBqjiP6M5BqA7P6P9L3L3L3L3L3L3L3L3L3L3L6SJyuD
             </div>
-            <button onclick="navigator.clipboard.writeText('7YBqjiP6M5BqA7P6P9L3L3L3L3L3L3L3L3L3L3L6SJyuD'); alert('Wallet Copied!')" class="w-full bg-yellow-600 hover:bg-yellow-700 py-4 rounded-xl font-bold transition">
+            <button onclick="copyToClipboard('7YBqjiP6M5BqA7P6P9L3L3L3L3L3L3L3L3L3L3L6SJyuD', 'Wallet Address Copied!')" class="w-full bg-yellow-600 hover:bg-yellow-700 py-4 rounded-xl font-bold transition" aria-label="Copy wallet address to clipboard">
                 <span lang="en">Copy Wallet Address</span><span lang="my">လိပ်စာကို ကူးယူပါ</span>
             </button>
         </div>
     </section>
 
+    <!-- Tokenomics Section -->
     <section class="py-20 px-6 text-center">
         <h2 class="text-4xl font-extrabold mb-12 uppercase tracking-tighter">Tokenomics</h2>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto">
@@ -115,27 +268,28 @@
         </div>
     </section>
 
+    <!-- Roadmap Section -->
     <section class="py-20 px-6 max-w-4xl mx-auto">
         <h2 class="text-4xl font-extrabold text-center mb-16 uppercase tracking-tighter">Roadmap 2026 - 2030</h2>
-        <div class="space-y-12 relative border-l border-gray-800 ml-4 pl-10">
-            <div class="relative">
-                <div class="absolute -left-[50px] top-0 w-5 h-5 bg-purple-600 rounded-full shadow-lg shadow-purple-600/50"></div>
+        <div class="space-y-12 relative border-l border-gray-800 ml-4 pl-10" role="list" aria-label="Project roadmap">
+            <div class="relative" role="listitem">
+                <div class="absolute -left-[50px] top-0 w-5 h-5 bg-purple-600 rounded-full shadow-lg shadow-purple-600/50" aria-hidden="true"></div>
                 <h3 class="text-xl font-bold text-purple-400">Phase 1: Foundation (Q3 2026)</h3>
                 <p class="text-sm text-gray-400 mt-2 leading-relaxed">
                     <span lang="en">Solana Mainnet Launch, Liquidity Pool setup, and Mint Authority closure.</span>
                     <span lang="my">Solana Mainnet ပေါ်တွင် လွှင့်တင်ခြင်း၊ Liquidity Pool တည်ဆောက်ခြင်းနှင့် Mint Authority ကို ပိတ်သိမ်းခြင်း။</span>
                 </p>
             </div>
-            <div class="relative">
-                <div class="absolute -left-[50px] top-0 w-5 h-5 bg-gray-700 rounded-full"></div>
+            <div class="relative" role="listitem">
+                <div class="absolute -left-[50px] top-0 w-5 h-5 bg-gray-700 rounded-full" aria-hidden="true"></div>
                 <h3 class="text-xl font-bold">Phase 2: Growth & Funding (Q1 2027)</h3>
                 <p class="text-sm text-gray-400 mt-2 leading-relaxed">
                     <span lang="en">1,000 SOL Fundraising and Stock Investment integration for holders.</span>
                     <span lang="my">1,000 SOL Fundraising ပြုလုပ်ခြင်းနှင့် ရင်းနှီးမြှုပ်နှံသူများအတွက် Stock Investment စနစ် စတင်ခြင်း။</span>
                 </p>
             </div>
-            <div class="relative">
-                <div class="absolute -left-[50px] top-0 w-5 h-5 bg-gray-700 rounded-full"></div>
+            <div class="relative" role="listitem">
+                <div class="absolute -left-[50px] top-0 w-5 h-5 bg-gray-700 rounded-full" aria-hidden="true"></div>
                 <h3 class="text-xl font-bold">Phase 3: Utility (Q3 2029)</h3>
                 <p class="text-sm text-gray-400 mt-2 leading-relaxed">
                     <span lang="en">Merchant partnerships in Myanmar, Mobile App launch, and Dividends distribution.</span>
@@ -145,34 +299,153 @@
         </div>
     </section>
 
-    <footer class="py-20 px-6 border-t border-white/5 text-center bg-[#010206]">
-        <div class="flex justify-center space-x-8 mb-10">
-            <a href="https://t.me/boost/SHWE_PAY_Official" target="_blank" class="text-3xl hover:text-purple-400 transition"><i class="fab fa-telegram"></i></a>
-            <a href="https://www.facebook.com/share/1DaBL3kiNX/" target="_blank" class="text-3xl hover:text-blue-500 transition"><i class="fab fa-facebook"></i></a>
-            <a href="https://x.com/DavidGwa168323" target="_blank" class="text-3xl hover:text-white transition"><i class="fab fa-x-twitter"></i></a>
+    <!-- Footer Section -->
+    <footer class="py-20 px-6 border-t border-white/5 text-center bg-[#010206]" role="contentinfo">
+        <div class="flex justify-center space-x-8 mb-10" role="list" aria-label="Social media links">
+            <a href="https://t.me/boost/SHWE_PAY_Official" target="_blank" rel="noopener noreferrer" class="text-3xl hover:text-purple-400 transition" aria-label="Visit our Telegram channel"><i class="fab fa-telegram" aria-hidden="true"></i></a>
+            <a href="https://www.facebook.com/share/1DaBL3kiNX/" target="_blank" rel="noopener noreferrer" class="text-3xl hover:text-blue-500 transition" aria-label="Visit our Facebook page"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+            <a href="https://x.com/DavidGwa168323" target="_blank" rel="noopener noreferrer" class="text-3xl hover:text-white transition" aria-label="Visit our X (Twitter) profile"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
         </div>
         <p class="text-gray-600 text-[10px] uppercase tracking-widest">© 2026 SHWE-PAY Ecosystem. Built on Solana Blockchain.</p>
     </footer>
 
+    <!-- Toast Notification Container -->
+    <div id="toast" class="toast" role="alert" aria-live="polite">
+        <i class="fas fa-check-circle" aria-hidden="true"></i>
+        <span id="toast-message"></span>
+    </div>
+
     <script>
+        /**
+         * Language Management System
+         * Handles switching between English and Myanmar languages
+         * Stores preference in localStorage for persistence
+         */
+        
+        /**
+         * Sets the active language and updates UI accordingly
+         * @param {string} lang - Language code ('en' or 'my')
+         */
         function setLanguage(lang) {
-            // Toggle text visibility
-            document.querySelectorAll('[lang="en"]').forEach(el => el.style.display = (lang === 'en' ? 'inline' : 'none'));
-            document.querySelectorAll('[lang="my"]').forEach(el => el.style.display = (lang === 'my' ? 'inline' : 'none'));
-            
-            // Update button styles
-            document.getElementById('btn-en').classList.toggle('lang-active', lang === 'en');
-            document.getElementById('btn-my').classList.toggle('lang-active', lang === 'my');
-            
-            // For block elements like h1, we need 'block' instead of 'inline'
-            document.querySelectorAll('h1 [lang], p [lang], h3 [lang]').forEach(el => {
-                if (el.style.display !== 'none') {
-                    // Restore original display style if needed or keep it simple
-                }
+            // Toggle text visibility based on selected language
+            document.querySelectorAll('[lang="en"]').forEach(el => {
+                el.style.display = (lang === 'en' ? 'inline' : 'none');
             });
+            document.querySelectorAll('[lang="my"]').forEach(el => {
+                el.style.display = (lang === 'my' ? 'inline' : 'none');
+            });
+            
+            // Update button styles and accessibility attributes
+            const btnEn = document.getElementById('btn-en');
+            const btnMy = document.getElementById('btn-my');
+            
+            btnEn.classList.toggle('lang-active', lang === 'en');
+            btnMy.classList.toggle('lang-active', lang === 'my');
+            
+            // Update ARIA pressed states for accessibility
+            btnEn.setAttribute('aria-pressed', lang === 'en' ? 'true' : 'false');
+            btnMy.setAttribute('aria-pressed', lang === 'my' ? 'true' : 'false');
+            
+            // Update HTML lang attribute for screen readers
+            document.documentElement.lang = lang;
+            
+            // Save language preference to localStorage
+            try {
+                localStorage.setItem('preferredLanguage', lang);
+            } catch (e) {
+                console.warn('Unable to save language preference:', e);
+            }
         }
-        // Initial set
-        setLanguage('en');
+        
+        /**
+         * Load saved language preference from localStorage
+         * Falls back to 'en' if no preference is saved
+         */
+        function loadLanguagePreference() {
+            try {
+                const savedLang = localStorage.getItem('preferredLanguage');
+                if (savedLang && (savedLang === 'en' || savedLang === 'my')) {
+                    setLanguage(savedLang);
+                } else {
+                    setLanguage('en');
+                }
+            } catch (e) {
+                console.warn('Unable to load language preference:', e);
+                setLanguage('en');
+            }
+        }
+        
+        /**
+         * Modern clipboard copy function with toast notification
+         * Uses the Clipboard API for secure copy operations
+         * @param {string} text - Text to copy to clipboard
+         * @param {string} message - Success message to display in toast
+         */
+        function copyToClipboard(text, message) {
+            // Check if Clipboard API is available
+            if (navigator.clipboard && window.isSecureContext) {
+                // Use modern Clipboard API
+                navigator.clipboard.writeText(text)
+                    .then(() => {
+                        showToast(message);
+                    })
+                    .catch(err => {
+                        console.error('Failed to copy text:', err);
+                        // Fallback to alert if clipboard fails
+                        alert(message);
+                    });
+            } else {
+                // Fallback for older browsers or non-secure contexts
+                fallbackCopyToClipboard(text, message);
+            }
+        }
+        
+        /**
+         * Fallback copy method for browsers that don't support Clipboard API
+         * @param {string} text - Text to copy
+         * @param {string} message - Success message
+         */
+        function fallbackCopyToClipboard(text, message) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.setAttribute('aria-hidden', 'true');
+            document.body.appendChild(textArea);
+            
+            try {
+                textArea.select();
+                document.execCommand('copy');
+                showToast(message);
+            } catch (err) {
+                console.error('Fallback copy failed:', err);
+                alert(message);
+            } finally {
+                document.body.removeChild(textArea);
+            }
+        }
+        
+        /**
+         * Display toast notification with message
+         * @param {string} message - Message to display
+         */
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            
+            toastMessage.textContent = message;
+            toast.classList.add('show');
+            
+            // Auto-hide after 3 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Initialize language on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadLanguagePreference();
+        });
     </script>
 </body>
 </html>
