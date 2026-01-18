@@ -92,6 +92,11 @@
             border-color: var(--color-primary);
         }
         
+        /* Language visibility - using classes for better control */
+        .lang-hidden {
+            display: none !important;
+        }
+        
         [lang="my"] { 
             display: none; 
         }
@@ -386,13 +391,21 @@
          * @param {string} lang - Language code ('en' or 'my')
          */
         function setLanguage(lang) {
-            // Toggle text visibility with proper display handling
+            // Toggle text visibility using CSS classes for better control
             document.querySelectorAll('[lang="en"]').forEach(el => {
-                el.style.display = (lang === 'en' ? '' : 'none');
+                if (lang === 'en') {
+                    el.classList.remove('lang-hidden');
+                } else {
+                    el.classList.add('lang-hidden');
+                }
             });
             
             document.querySelectorAll('[lang="my"]').forEach(el => {
-                el.style.display = (lang === 'my' ? '' : 'none');
+                if (lang === 'my') {
+                    el.classList.remove('lang-hidden');
+                } else {
+                    el.classList.add('lang-hidden');
+                }
             });
             
             // Update button styles and ARIA attributes
