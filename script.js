@@ -1,92 +1,39 @@
-// 3D Coin Animation with Three.js
+// CSS-based 3D Coin Animation
 function init3DCoin() {
     const container = document.getElementById('coin-container');
     if (!container) return;
 
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-    
-    renderer.setSize(container.clientWidth, container.clientHeight);
-    renderer.setClearColor(0x000000, 0);
-    container.appendChild(renderer.domElement);
+    // Create coin element with CSS 3D transforms
+    const coin = document.createElement('div');
+    coin.className = 'coin-3d';
+    coin.innerHTML = `
+        <div class="coin-face coin-front">$</div>
+        <div class="coin-face coin-back">$</div>
+        <div class="coin-edge"></div>
+    `;
+    container.appendChild(coin);
 
-    // Create coin geometry
-    const geometry = new THREE.CylinderGeometry(1.5, 1.5, 0.2, 64);
-    
-    // Create material with gold color
-    const material = new THREE.MeshPhongMaterial({
-        color: 0xFFD700,
-        shininess: 100,
-        specular: 0xFFF5CC,
-        emissive: 0x332200
-    });
-
-    const coin = new THREE.Mesh(geometry, material);
-    scene.add(coin);
-
-    // Add $ symbol as a plane on the coin
-    const canvas = document.createElement('canvas');
-    canvas.width = 256;
-    canvas.height = 256;
-    const ctx = canvas.getContext('2d');
-    ctx.fillStyle = '#0a1628';
-    ctx.font = 'bold 180px Arial';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText('$', 128, 128);
-
-    const texture = new THREE.CanvasTexture(canvas);
-    const symbolMaterial = new THREE.MeshBasicMaterial({ map: texture, transparent: true });
-    const symbolGeometry = new THREE.PlaneGeometry(2, 2);
-    
-    const symbolFront = new THREE.Mesh(symbolGeometry, symbolMaterial);
-    symbolFront.position.z = 0.11;
-    coin.add(symbolFront);
-    
-    const symbolBack = new THREE.Mesh(symbolGeometry, symbolMaterial);
-    symbolBack.position.z = -0.11;
-    symbolBack.rotation.y = Math.PI;
-    coin.add(symbolBack);
-
-    // Add lights
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-    scene.add(ambientLight);
-
-    const pointLight1 = new THREE.PointLight(0xFFD700, 1, 100);
-    pointLight1.position.set(5, 5, 5);
-    scene.add(pointLight1);
-
-    const pointLight2 = new THREE.PointLight(0x4169E1, 0.5, 100);
-    pointLight2.position.set(-5, -5, 5);
-    scene.add(pointLight2);
-
-    camera.position.z = 5;
-
-    // Animation
+    // Animate the coin
+    let rotationX = 0;
+    let rotationY = 0;
     let floatOffset = 0;
+
     function animate() {
-        requestAnimationFrame(animate);
-        
-        coin.rotation.x += 0.005;
-        coin.rotation.y += 0.01;
-        
-        // Floating effect
+        rotationX += 0.5;
+        rotationY += 1;
         floatOffset += 0.02;
-        coin.position.y = Math.sin(floatOffset) * 0.3;
         
-        renderer.render(scene, camera);
+        const translateY = Math.sin(floatOffset) * 20;
+        
+        coin.style.transform = `
+            translateY(${translateY}px)
+            rotateX(${rotationX}deg)
+            rotateY(${rotationY}deg)
+        `;
+        
+        requestAnimationFrame(animate);
     }
     animate();
-
-    // Handle resize
-    window.addEventListener('resize', () => {
-        if (container.clientWidth > 0) {
-            camera.aspect = container.clientWidth / container.clientHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(container.clientWidth, container.clientHeight);
-        }
-    });
 }
 
 // Stock Ticker Animation
@@ -98,20 +45,19 @@ function animateStockTicker() {
         const changeElement = item.querySelector('.stock-change');
         
         // Random price fluctuation (for demo purposes)
-        const currentPrice = parseFloat(priceElement.textContent.replace(/[$,]/g, ''));
-        const change = (Math.random() - 0.5) * 2;
-        const newPrice = currentPrice + change;
-        
-        const changePercent = ((newPrice - currentPrice) / currentPrice * 100).toFixed(2);
+        const currentPriceText = priceElement.textContent.replace(/[$,]/g, '');
+        const currentPrice = parseFloat(currentPriceText);
+        const changePercent = (Math.random() - 0.48) * 3;
+        const newPrice = currentPrice * (1 + changePercent / 100);
         
         // Update elements
-        if (priceElement.textContent.includes(',')) {
-            priceElement.textContent = '$' + newPrice.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+        if (currentPriceText.includes(',') || currentPrice > 1000) {
+            priceElement.textContent = '$' + Math.floor(newPrice).toLocaleString('en-US');
         } else {
             priceElement.textContent = '$' + newPrice.toFixed(2);
         }
         
-        changeElement.textContent = (changePercent > 0 ? '+' : '') + changePercent + '%';
+        changeElement.textContent = (changePercent > 0 ? '+' : '') + changePercent.toFixed(2) + '%';
         
         // Update classes
         if (changePercent > 0) {
@@ -135,117 +81,145 @@ function animateStockTicker() {
     }, 3000);
 }
 
-// Reserve Model Chart
+// Reserve Model Chart using Canvas
 function initReserveChart() {
-    const ctx = document.getElementById('reserveChart');
-    if (!ctx) return;
+    const canvas = document.getElementById('reserveChart');
+    if (!canvas) return;
 
-    new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: ['Stablecoins (30%)', 'US Treasuries (40%)', 'SOL & Crypto (30%)'],
-            datasets: [{
-                data: [30, 40, 30],
-                backgroundColor: [
-                    'rgba(255, 215, 0, 0.8)',
-                    'rgba(65, 105, 225, 0.8)',
-                    'rgba(153, 69, 255, 0.8)'
-                ],
-                borderColor: [
-                    'rgba(255, 215, 0, 1)',
-                    'rgba(65, 105, 225, 1)',
-                    'rgba(153, 69, 255, 1)'
-                ],
-                borderWidth: 2
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: true,
-            plugins: {
-                legend: {
-                    position: 'bottom',
-                    labels: {
-                        color: '#B8C1D9',
-                        font: {
-                            size: 14,
-                            weight: '600'
-                        },
-                        padding: 20
-                    }
-                },
-                tooltip: {
-                    backgroundColor: 'rgba(10, 22, 40, 0.9)',
-                    titleColor: '#FFD700',
-                    bodyColor: '#B8C1D9',
-                    borderColor: 'rgba(255, 215, 0, 0.3)',
-                    borderWidth: 1,
-                    padding: 12,
-                    cornerRadius: 8
-                }
-            },
-            animation: {
-                animateRotate: true,
-                animateScale: true,
-                duration: 2000
-            }
-        }
+    const ctx = canvas.getContext('2d');
+    const width = canvas.width = canvas.offsetWidth * 2;
+    const height = canvas.height = canvas.offsetHeight * 2;
+    ctx.scale(2, 2);
+    
+    const centerX = canvas.offsetWidth / 2;
+    const centerY = canvas.offsetHeight / 2;
+    const radius = Math.min(centerX, centerY) - 40;
+
+    const data = [
+        { label: 'Stablecoins', value: 30, color: '#FFD700', endColor: '#FFA500' },
+        { label: 'US Treasuries', value: 40, color: '#4169E1', endColor: '#1E90FF' },
+        { label: 'SOL & Crypto', value: 30, color: '#9945FF', endColor: '#14F195' }
+    ];
+
+    let currentAngle = -Math.PI / 2;
+
+    data.forEach((segment, index) => {
+        const sliceAngle = (segment.value / 100) * Math.PI * 2;
+        
+        // Create gradient
+        const gradient = ctx.createLinearGradient(
+            centerX - radius, centerY,
+            centerX + radius, centerY
+        );
+        gradient.addColorStop(0, segment.color);
+        gradient.addColorStop(1, segment.endColor);
+
+        // Draw slice
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.arc(centerX, centerY, radius, currentAngle, currentAngle + sliceAngle);
+        ctx.closePath();
+        ctx.fillStyle = gradient;
+        ctx.fill();
+        
+        // Draw border
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        currentAngle += sliceAngle;
+    });
+
+    // Draw center circle
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, radius * 0.5, 0, Math.PI * 2);
+    ctx.fillStyle = '#0a1628';
+    ctx.fill();
+
+    // Draw legend
+    const legendY = canvas.offsetHeight - 80;
+    const legendX = 20;
+    data.forEach((segment, index) => {
+        const x = legendX + (index * 140);
+        const y = legendY;
+        
+        // Draw color box
+        ctx.fillStyle = segment.color;
+        ctx.fillRect(x, y, 15, 15);
+        
+        // Draw text
+        ctx.fillStyle = '#B8C1D9';
+        ctx.font = '12px Inter, sans-serif';
+        ctx.fillText(`${segment.label} (${segment.value}%)`, x + 20, y + 12);
     });
 }
 
 // Dashboard Mini Charts
 function initDashboardCharts() {
-    // TVL Chart
-    const tvlCtx = document.getElementById('tvlChart');
-    if (tvlCtx) {
-        createMiniChart(tvlCtx, generateTrendData(30), 'rgba(255, 215, 0, 0.5)');
-    }
-
-    // Users Chart
-    const usersCtx = document.getElementById('usersChart');
-    if (usersCtx) {
-        createMiniChart(usersCtx, generateTrendData(30), 'rgba(20, 241, 149, 0.5)');
-    }
-
-    // Transactions Chart
-    const txCtx = document.getElementById('txChart');
-    if (txCtx) {
-        createMiniChart(txCtx, generateTrendData(30), 'rgba(65, 105, 225, 0.5)');
-    }
+    createMiniChart('tvlChart', '#FFD700');
+    createMiniChart('usersChart', '#14F195');
+    createMiniChart('txChart', '#4169E1');
 }
 
-function createMiniChart(ctx, data, color) {
-    new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: data.map((_, i) => ''),
-            datasets: [{
-                data: data,
-                borderColor: color.replace('0.5', '1'),
-                backgroundColor: color,
-                fill: true,
-                tension: 0.4,
-                borderWidth: 2,
-                pointRadius: 0
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: { display: false },
-                tooltip: { enabled: false }
-            },
-            scales: {
-                x: { display: false },
-                y: { display: false }
-            },
-            interaction: {
-                mode: 'index',
-                intersect: false
-            }
+function createMiniChart(canvasId, color) {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    const width = canvas.width = canvas.offsetWidth * 2;
+    const height = canvas.height = canvas.offsetHeight * 2;
+    ctx.scale(2, 2);
+
+    const data = generateTrendData(30);
+    const maxValue = Math.max(...data);
+    const minValue = Math.min(...data);
+    const range = maxValue - minValue;
+
+    const w = canvas.offsetWidth;
+    const h = canvas.offsetHeight;
+    const padding = 10;
+
+    // Draw area
+    ctx.beginPath();
+    ctx.moveTo(0, h);
+    
+    data.forEach((value, index) => {
+        const x = (index / (data.length - 1)) * w;
+        const y = h - padding - ((value - minValue) / range) * (h - padding * 2);
+        
+        if (index === 0) {
+            ctx.lineTo(x, y);
+        } else {
+            ctx.lineTo(x, y);
         }
     });
+    
+    ctx.lineTo(w, h);
+    ctx.closePath();
+    
+    // Create gradient
+    const gradient = ctx.createLinearGradient(0, 0, 0, h);
+    gradient.addColorStop(0, color + '80');
+    gradient.addColorStop(1, color + '00');
+    ctx.fillStyle = gradient;
+    ctx.fill();
+
+    // Draw line
+    ctx.beginPath();
+    data.forEach((value, index) => {
+        const x = (index / (data.length - 1)) * w;
+        const y = h - padding - ((value - minValue) / range) * (h - padding * 2);
+        
+        if (index === 0) {
+            ctx.moveTo(x, y);
+        } else {
+            ctx.lineTo(x, y);
+        }
+    });
+    
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 2;
+    ctx.stroke();
 }
 
 function generateTrendData(points) {
@@ -355,7 +329,7 @@ function animateValue(element, start, end, duration, config) {
         
         let displayValue;
         if (config.format === 'currency') {
-            displayValue = config.prefix + current.toLocaleString('en-US', { maximumFractionDigits: 0 });
+            displayValue = config.prefix + Math.floor(current).toLocaleString('en-US');
         } else if (config.format === 'percentage') {
             displayValue = current.toFixed(1) + config.suffix;
         } else {
@@ -376,8 +350,13 @@ function animateValue(element, start, end, duration, config) {
 document.addEventListener('DOMContentLoaded', () => {
     init3DCoin();
     animateStockTicker();
-    initReserveChart();
-    initDashboardCharts();
+    
+    // Wait a bit for layout to settle before drawing charts
+    setTimeout(() => {
+        initReserveChart();
+        initDashboardCharts();
+    }, 100);
+    
     initSmoothScroll();
     initScrollAnimations();
     initNavbarScroll();
@@ -386,9 +365,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Handle window resize
 window.addEventListener('resize', () => {
-    // Reinitialize charts on significant resize
-    const width = window.innerWidth;
-    if (width !== window.lastWidth) {
-        window.lastWidth = width;
-    }
+    // Redraw charts on resize
+    initReserveChart();
+    initDashboardCharts();
 });
