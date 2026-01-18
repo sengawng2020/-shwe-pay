@@ -359,9 +359,10 @@
                     // Fallback for older browsers or non-secure contexts
                     const textArea = document.createElement('textarea');
                     textArea.value = text;
-                    textArea.style.position = 'fixed';
-                    textArea.style.left = '-999999px';
-                    textArea.style.top = '-999999px';
+                    textArea.style.position = 'absolute';
+                    textArea.style.left = '-9999px';
+                    textArea.style.opacity = '0';
+                    textArea.setAttribute('aria-hidden', 'true');
                     document.body.appendChild(textArea);
                     textArea.focus();
                     textArea.select();
@@ -431,14 +432,13 @@
          */
         function initPage() {
             // Load saved language preference or default to English
-            let savedLang = 'en';
             try {
-                savedLang = localStorage.getItem('preferredLanguage') || 'en';
+                const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+                setLanguage(savedLang);
             } catch (e) {
                 console.warn('Could not load language preference:', e);
+                setLanguage('en');
             }
-            
-            setLanguage(savedLang);
         }
         
         // Initialize when DOM is ready
