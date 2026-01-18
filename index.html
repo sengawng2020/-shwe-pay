@@ -15,13 +15,15 @@
     <meta property="og:description" content="Secure, low-fee digital payments and stock investment opportunities for long-term holders on the Solana Blockchain.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sengawng2020.github.io/-shwe-pay/">
-    <meta property="og:image" content="https://sengawng2020.github.io/-shwe-pay/og-image.png">
+    <!-- Note: Add og-image.png file to repository root for social media previews -->
+    <!-- <meta property="og:image" content="https://sengawng2020.github.io/-shwe-pay/og-image.png"> -->
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="SHWE-PAY | Invest in Myanmar Digital Era">
     <meta name="twitter:description" content="Secure, low-fee digital payments and stock investment opportunities on Solana Blockchain.">
-    <meta name="twitter:image" content="https://sengawng2020.github.io/-shwe-pay/og-image.png">
+    <!-- Note: Add og-image.png file to repository root for Twitter card previews -->
+    <!-- <meta name="twitter:image" content="https://sengawng2020.github.io/-shwe-pay/og-image.png"> -->
     
     <!-- Preconnect to external resources for better performance -->
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
@@ -391,8 +393,8 @@
                     })
                     .catch(err => {
                         console.error('Failed to copy text:', err);
-                        // Fallback to alert if clipboard fails
-                        alert(message);
+                        // Show toast even on failure with error message
+                        showToast('Failed to copy. Please try again.');
                     });
             } else {
                 // Fallback for older browsers or non-secure contexts
@@ -415,11 +417,15 @@
             
             try {
                 textArea.select();
-                document.execCommand('copy');
-                showToast(message);
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    showToast(message);
+                } else {
+                    showToast('Failed to copy. Please try manually.');
+                }
             } catch (err) {
                 console.error('Fallback copy failed:', err);
-                alert(message);
+                showToast('Copy not supported. Please copy manually.');
             } finally {
                 document.body.removeChild(textArea);
             }
