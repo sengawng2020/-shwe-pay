@@ -3,176 +3,450 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHWE-PAY | Dual Language Whitepaper</title>
+    <meta name="description" content="SHWE-PAY - Myanmar's leading digital payment token on Solana blockchain. Secure, low-fee digital payments and stock investment opportunities for long-term holders.">
+    <meta name="keywords" content="SHWE PAY, Myanmar, cryptocurrency, Solana, digital payment, blockchain, fintech, investment">
+    <meta name="author" content="SHWE-PAY Team">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://shwe-pay.com/">
+    <meta property="og:title" content="SHWE-PAY | Myanmar Digital Payment Token">
+    <meta property="og:description" content="Secure, low-fee digital payments and stock investment opportunities on Solana Blockchain">
+    <meta property="og:image" content="https://shwe-pay.com/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://shwe-pay.com/">
+    <meta property="twitter:title" content="SHWE-PAY | Myanmar Digital Payment Token">
+    <meta property="twitter:description" content="Secure, low-fee digital payments and stock investment opportunities on Solana Blockchain">
+    <meta property="twitter:image" content="https://shwe-pay.com/og-image.jpg">
+    
+    <title>SHWE-PAY | Myanmar Digital Payment Token - Official Whitepaper</title>
+    
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Padauk:wght@400;700&display=swap');
-        body { font-family: 'Plus Jakarta Sans', 'Padauk', sans-serif; background-color: #03060c; color: #e2e8f0; scroll-behavior: smooth; }
-        .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.08); }
-        .gradient-text { background: linear-gradient(135deg, #a78bfa, #34d399); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .lang-active { background: #7c3aed; color: white; border-color: #7c3aed; }
-        [lang="my"] { display: none; } /* Hidden by default */
+        
+        /* CSS Custom Properties */
+        :root {
+            --color-primary: #7c3aed;
+            --color-primary-dark: #6d28d9;
+            --color-secondary: #34d399;
+            --color-accent: #a78bfa;
+            --color-bg-dark: #03060c;
+            --color-bg-darker: #010206;
+            --color-text: #e2e8f0;
+            --color-text-muted: #94a3b8;
+            --color-border: rgba(255, 255, 255, 0.08);
+            --color-glass-bg: rgba(255, 255, 255, 0.02);
+            --transition-speed: 0.3s;
+            --border-radius: 1rem;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body { 
+            font-family: 'Plus Jakarta Sans', 'Padauk', sans-serif; 
+            background-color: var(--color-bg-dark); 
+            color: var(--color-text); 
+            scroll-behavior: smooth;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Glass morphism effect */
+        .glass { 
+            background: var(--color-glass-bg); 
+            backdrop-filter: blur(15px); 
+            border: 1px solid var(--color-border);
+            transition: all var(--transition-speed) ease;
+        }
+        
+        .glass:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        /* Gradient text effect */
+        .gradient-text { 
+            background: linear-gradient(135deg, var(--color-accent), var(--color-secondary)); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Language switcher */
+        .lang-active { 
+            background: var(--color-primary); 
+            color: white; 
+            border-color: var(--color-primary);
+        }
+        
+        /* Language visibility - using classes for better control */
+        .lang-hidden {
+            display: none !important;
+        }
+        
+        [lang="my"] { 
+            display: none; 
+        }
+        
+        /* Accessibility - Focus states */
+        button:focus-visible, a:focus-visible {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 2px;
+        }
+        
+        /* Smooth transitions */
+        button, a, .glass {
+            transition: all var(--transition-speed) ease;
+        }
+        
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--color-primary);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 40px rgba(124, 58, 237, 0.3);
+            transform: translateY(150%);
+            opacity: 0;
+            transition: all var(--transition-speed) ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        /* Skip to content link for accessibility */
+        .skip-to-content {
+            position: absolute;
+            top: -100px;
+            left: 0;
+            background: var(--color-primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            z-index: 100;
+        }
+        
+        .skip-to-content:focus {
+            top: 0;
+        }
+        
+        /* Responsive typography */
+        @media (max-width: 768px) {
+            html {
+                font-size: 14px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            html {
+                font-size: 12px;
+            }
+        }
+        
+        /* Improved code display for token addresses */
+        code {
+            word-break: break-all;
+            overflow-wrap: break-word;
+        }
     </style>
 </head>
 <body>
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+    
+    <!-- Toast notification element -->
+    <div id="toast" class="toast" role="alert" aria-live="polite">
+        <i class="fas fa-check-circle"></i>
+        <span id="toast-message"></span>
+    </div>
 
-    <nav class="fixed w-full z-50 glass py-4 px-6 flex justify-between items-center">
+    <nav class="fixed w-full z-50 glass py-4 px-6 flex justify-between items-center" role="navigation" aria-label="Main navigation">
         <div class="text-2xl font-extrabold gradient-text">$SHWE PAY</div>
         
         <div class="flex items-center gap-4">
-            <div class="flex border border-gray-700 rounded-lg overflow-hidden text-xs font-bold">
-                <button onclick="setLanguage('en')" id="btn-en" class="px-3 py-1 lang-active transition">EN</button>
-                <button onclick="setLanguage('my')" id="btn-my" class="px-3 py-1 hover:bg-gray-800 transition">မြန်မာ</button>
+            <div class="flex border border-gray-700 rounded-lg overflow-hidden text-xs font-bold" role="group" aria-label="Language selector">
+                <button onclick="setLanguage('en')" id="btn-en" class="px-3 py-1 lang-active transition" aria-label="Switch to English" aria-pressed="true">EN</button>
+                <button onclick="setLanguage('my')" id="btn-my" class="px-3 py-1 hover:bg-gray-800 transition" aria-label="Switch to Myanmar language" aria-pressed="false">မြန်မာ</button>
             </div>
-            <a href="https://t.me/boost/SHWE_PAY_Official" target="_blank" class="hidden md:block bg-purple-600 hover:bg-purple-700 px-5 py-2 rounded-full font-bold transition text-xs shadow-lg shadow-purple-600/20">Join Community</a>
+            <a href="https://t.me/boost/SHWE_PAY_Official" target="_blank" rel="noopener noreferrer" class="hidden md:block bg-purple-600 hover:bg-purple-700 px-5 py-2 rounded-full font-bold transition text-xs shadow-lg shadow-purple-600/20" aria-label="Join our Telegram community">Join Community</a>
         </div>
     </nav>
 
-    <section class="pt-40 pb-20 px-6 text-center">
-        <span class="bg-purple-500/10 text-purple-400 px-4 py-1 rounded-full text-xs font-bold border border-purple-500/20 mb-6 inline-block uppercase tracking-wider">Official Whitepaper</span>
-        
-        <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight leading-tight">
-            <span lang="en">Invest in Myanmar <br><span class="gradient-text">Digital Era</span></span>
-            <span lang="my">မြန်မာ့ <span class="gradient-text">ဒီဂျစ်တယ်ခေတ်</span> <br>ရင်းနှီးမြှုပ်နှံမှု</span>
-        </h1>
+    <main id="main-content">
+        <section class="pt-40 pb-20 px-6 text-center">
+            <span class="bg-purple-500/10 text-purple-400 px-4 py-1 rounded-full text-xs font-bold border border-purple-500/20 mb-6 inline-block uppercase tracking-wider">Official Whitepaper</span>
+            
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight leading-tight">
+                <span lang="en">Invest in Myanmar <br><span class="gradient-text">Digital Era</span></span>
+                <span lang="my">မြန်မာ့ <span class="gradient-text">ဒီဂျစ်တယ်ခေတ်</span> <br>ရင်းနှီးမြှုပ်နှံမှု</span>
+            </h1>
 
-        <p class="max-w-3xl mx-auto text-gray-400 text-lg mb-10 leading-relaxed">
-            <span lang="en">Secure, low-fee digital payments and stock investment opportunities for long-term holders on the Solana Blockchain.</span>
-            <span lang="my">Solana Blockchain ပေါ်တွင် အခြေခံထားပြီး မြန်ဆန်၍ အခကြေးငွေ သက်သာသော ငွေပေးချေမှုစနစ်နှင့် စတော့ရှယ်ယာပုံစံ ရေရှည်ရင်းနှီးမြှုပ်နှံမှု အခွင့်အလမ်းများ။</span>
-        </p>
-        
-        <div class="max-w-2xl mx-auto glass p-2 rounded-2xl flex flex-col md:flex-row items-center gap-4 mb-10">
-            <div class="px-4 py-2 text-left flex-1 w-full">
-                <p class="text-[10px] text-gray-500 uppercase font-bold mb-1">Official Token Address (CA)</p>
-                <code class="text-green-400 text-xs md:text-sm font-mono break-all">AFBuHorDPnsaM2MQfIrmPtPBs3UYuKfiHksTJe4nfpueQw</code>
-            </div>
-            <button onclick="navigator.clipboard.writeText('AFBuHorDPnsaM2MQfIrmPtPBs3UYuKfiHksTJe4nfpueQw'); alert('CA Copied!')" class="w-full md:w-auto bg-white/10 hover:bg-white/20 px-6 py-4 rounded-xl font-bold transition flex items-center justify-center gap-2">
-                <i class="fas fa-copy"></i> Copy CA
-            </button>
-        </div>
-    </section>
-
-    <section class="py-10 px-6 max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
-        <div class="glass p-8 rounded-3xl border-purple-500/20 shadow-2xl">
-            <h3 class="text-2xl font-bold mb-4 text-purple-400 flex items-center gap-3">
-                <i class="fas fa-project-diagram"></i> 
-                <span lang="en">Project Overview</span><span lang="my">စီမံကိန်း အကျဉ်းချုပ်</span>
-            </h3>
-            <p class="text-gray-400 leading-relaxed text-sm">
-                <span lang="en">$SHWE PAY is Myanmar's leading digital payment token. Our mission is to provide affordable financial access and stable investment dividends for all holders.</span>
-                <span lang="my">$SHWE PAY သည် မြန်မာ့ဦးဆောင် Digital Payment နှင့် Investment Token တစ်ခုဖြစ်သည်။ ကျွန်ုပ်တို့၏ ရည်မှန်းချက်မှာ လူတိုင်း လက်လှမ်းမီနိုင်သော ဘဏ္ဍာရေးစနစ်နှင့် ခိုင်မာသော အမြတ်ဝေစုများကို ဖန်တီးပေးရန်ဖြစ်သည်။</span>
+            <p class="max-w-3xl mx-auto text-gray-400 text-lg mb-10 leading-relaxed">
+                <span lang="en">Secure, low-fee digital payments and stock investment opportunities for long-term holders on the Solana Blockchain.</span>
+                <span lang="my">Solana Blockchain ပေါ်တွင် အခြေခံထားပြီး မြန်ဆန်၍ အခကြေးငွေ သက်သာသော ငွေပေးချေမှုစနစ်နှင့် စတော့ရှယ်ယာပုံစံ ရေရှည်ရင်းနှီးမြှုပ်နှံမှု အခွင့်အလမ်းများ။</span>
             </p>
-            <div class="grid grid-cols-2 gap-4 mt-6">
-                <div class="bg-white/5 p-4 rounded-xl">
-                    <p class="text-xl font-bold">1,000 SOL</p>
-                    <p class="text-[10px] text-gray-500 uppercase font-bold">Target Fundraising</p>
+            
+            <div class="max-w-2xl mx-auto glass p-2 rounded-2xl flex flex-col md:flex-row items-center gap-4 mb-10">
+                <div class="px-4 py-2 text-left flex-1 w-full">
+                    <p class="text-[10px] text-gray-500 uppercase font-bold mb-1">Official Token Address (CA)</p>
+                    <code class="text-green-400 text-xs md:text-sm font-mono break-all" id="token-address">AFBuHorDPnsaM2MQfIrmPtPBs3UYuKfiHksTJe4nfpueQw</code>
                 </div>
-                <div class="bg-white/5 p-4 rounded-xl">
-                    <p class="text-xl font-bold text-green-400">Dividends</p>
-                    <p class="text-[10px] text-gray-500 uppercase font-bold">Profit Sharing</p>
+                <button onclick="copyToClipboard('AFBuHorDPnsaM2MQfIrmPtPBs3UYuKfiHksTJe4nfpueQw', 'CA Copied!')" class="w-full md:w-auto bg-white/10 hover:bg-white/20 px-6 py-4 rounded-xl font-bold transition flex items-center justify-center gap-2" aria-label="Copy token address to clipboard">
+                    <i class="fas fa-copy"></i> Copy CA
+                </button>
+            </div>
+        </section>
+
+        <section class="py-10 px-6 max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
+            <article class="glass p-8 rounded-3xl border-purple-500/20 shadow-2xl">
+                <h2 class="text-2xl font-bold mb-4 text-purple-400 flex items-center gap-3">
+                    <i class="fas fa-project-diagram" aria-hidden="true"></i> 
+                    <span lang="en">Project Overview</span><span lang="my">စီမံကိန်း အကျဉ်းချုပ်</span>
+                </h2>
+                <p class="text-gray-400 leading-relaxed text-sm">
+                    <span lang="en">$SHWE PAY is Myanmar's leading digital payment token. Our mission is to provide affordable financial access and stable investment dividends for all holders.</span>
+                    <span lang="my">$SHWE PAY သည် မြန်မာ့ဦးဆောင် Digital Payment နှင့် Investment Token တစ်ခုဖြစ်သည်။ ကျွန်ုပ်တို့၏ ရည်မှန်းချက်မှာ လူတိုင်း လက်လှမ်းမီနိုင်သော ဘဏ္ဍာရေးစနစ်နှင့် ခိုင်မာသော အမြတ်ဝေစုများကို ဖန်တီးပေးရန်ဖြစ်သည်။</span>
+                </p>
+                <div class="grid grid-cols-2 gap-4 mt-6">
+                    <div class="bg-white/5 p-4 rounded-xl">
+                        <p class="text-xl font-bold">1,000 SOL</p>
+                        <p class="text-[10px] text-gray-500 uppercase font-bold">Target Fundraising</p>
+                    </div>
+                    <div class="bg-white/5 p-4 rounded-xl">
+                        <p class="text-xl font-bold text-green-400">Dividends</p>
+                        <p class="text-[10px] text-gray-500 uppercase font-bold">Profit Sharing</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="glass p-8 rounded-3xl border-yellow-500/20 shadow-2xl">
+                <h2 class="text-2xl font-bold mb-4 text-yellow-500 flex items-center gap-3">
+                    <i class="fas fa-coins" aria-hidden="true"></i> 
+                    <span lang="en">Fundraising Wallet</span><span lang="my">ရင်းနှီးမြှုပ်နှံရန် Wallet</span>
+                </h2>
+                <p class="text-xs text-gray-400 mb-4 italic">
+                    <span lang="en">Send SOL to the address below to participate in the fundraising.</span>
+                    <span lang="my">ရင်းနှီးမြှုပ်နှံမှုတွင် ပါဝင်ရန် အောက်ပါ SOL Wallet သို့ ပေးပို့နိုင်ပါသည်။</span>
+                </p>
+                <div class="bg-black/60 p-4 rounded-xl border border-white/5 break-all font-mono text-xs text-yellow-400 mb-6" id="wallet-address">
+                    7YBqjiP6M5BqA7P6P9L3L3L3L3L3L3L3L3L3L3L6SJyuD
+                </div>
+                <button onclick="copyToClipboard('7YBqjiP6M5BqA7P6P9L3L3L3L3L3L3L3L3L3L3L6SJyuD', 'Wallet Address Copied!')" class="w-full bg-yellow-600 hover:bg-yellow-700 py-4 rounded-xl font-bold transition" aria-label="Copy wallet address to clipboard">
+                    <span lang="en">Copy Wallet Address</span><span lang="my">လိပ်စာကို ကူးယူပါ</span>
+                </button>
+            </article>
+        </section>
+
+        <section class="py-20 px-6 text-center">
+            <h2 class="text-4xl font-extrabold mb-12 uppercase tracking-tighter">Tokenomics</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto" role="list">
+                <div class="glass p-6 rounded-2xl" role="listitem">
+                    <p class="text-[10px] font-bold text-gray-500 uppercase">Supply</p>
+                    <p class="text-xl font-bold">1.001 Billion</p>
+                </div>
+                <div class="glass p-6 rounded-2xl" role="listitem">
+                    <p class="text-[10px] font-bold text-gray-500 uppercase">Symbol</p>
+                    <p class="text-xl font-bold text-purple-400">$SHWE</p>
+                </div>
+                <div class="glass p-6 rounded-2xl" role="listitem">
+                    <p class="text-[10px] font-bold text-gray-500 uppercase">Tax Fee</p>
+                    <p class="text-xl font-bold text-green-400">0.25%</p>
+                </div>
+                <div class="glass p-6 rounded-2xl border-green-500/20" role="listitem">
+                    <p class="text-[10px] font-bold text-gray-500 uppercase">Mint Authority</p>
+                    <p class="text-xl font-bold">Revoked</p>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="glass p-8 rounded-3xl border-yellow-500/20 shadow-2xl">
-            <h3 class="text-2xl font-bold mb-4 text-yellow-500 flex items-center gap-3">
-                <i class="fas fa-coins"></i> 
-                <span lang="en">Fundraising Wallet</span><span lang="my">ရင်းနှီးမြှုပ်နှံရန် Wallet</span>
-            </h3>
-            <p class="text-xs text-gray-400 mb-4 italic">
-                <span lang="en">Send SOL to the address below to participate in the fundraising.</span>
-                <span lang="my">ရင်းနှီးမြှုပ်နှံမှုတွင် ပါဝင်ရန် အောက်ပါ SOL Wallet သို့ ပေးပို့နိုင်ပါသည်။</span>
-            </p>
-            <div class="bg-black/60 p-4 rounded-xl border border-white/5 break-all font-mono text-xs text-yellow-400 mb-6">
-                7YBqjiP6M5BqA7P6P9L3L3L3L3L3L3L3L3L3L3L6SJyuD
+        <section class="py-20 px-6 max-w-4xl mx-auto">
+            <h2 class="text-4xl font-extrabold text-center mb-16 uppercase tracking-tighter">Roadmap 2026 - 2030</h2>
+            <div class="space-y-12 relative border-l border-gray-800 ml-4 pl-10" role="list">
+                <article class="relative" role="listitem">
+                    <div class="absolute -left-[50px] top-0 w-5 h-5 bg-purple-600 rounded-full shadow-lg shadow-purple-600/50" aria-hidden="true"></div>
+                    <h3 class="text-xl font-bold text-purple-400">Phase 1: Foundation (Q3 2026)</h3>
+                    <p class="text-sm text-gray-400 mt-2 leading-relaxed">
+                        <span lang="en">Solana Mainnet Launch, Liquidity Pool setup, and Mint Authority closure.</span>
+                        <span lang="my">Solana Mainnet ပေါ်တွင် လွှင့်တင်ခြင်း၊ Liquidity Pool တည်ဆောက်ခြင်းနှင့် Mint Authority ကို ပိတ်သိမ်းခြင်း။</span>
+                    </p>
+                </article>
+                <article class="relative" role="listitem">
+                    <div class="absolute -left-[50px] top-0 w-5 h-5 bg-gray-700 rounded-full" aria-hidden="true"></div>
+                    <h3 class="text-xl font-bold">Phase 2: Growth & Funding (Q1 2027)</h3>
+                    <p class="text-sm text-gray-400 mt-2 leading-relaxed">
+                        <span lang="en">1,000 SOL Fundraising and Stock Investment integration for holders.</span>
+                        <span lang="my">1,000 SOL Fundraising ပြုလုပ်ခြင်းနှင့် ရင်းနှီးမြှုပ်နှံသူများအတွက် Stock Investment စနစ် စတင်ခြင်း။</span>
+                    </p>
+                </article>
+                <article class="relative" role="listitem">
+                    <div class="absolute -left-[50px] top-0 w-5 h-5 bg-gray-700 rounded-full" aria-hidden="true"></div>
+                    <h3 class="text-xl font-bold">Phase 3: Utility (Q3 2029)</h3>
+                    <p class="text-sm text-gray-400 mt-2 leading-relaxed">
+                        <span lang="en">Merchant partnerships in Myanmar, Mobile App launch, and Dividends distribution.</span>
+                        <span lang="my">စီးပွားရေးလုပ်ငန်းရှင်များနှင့် မိတ်ဖက်ပြုခြင်း၊ Mobile App ထုတ်ဝေခြင်းနှင့် အမြတ်ဝေစုများ စတင်ခြင်း။</span>
+                    </p>
+                </article>
             </div>
-            <button onclick="navigator.clipboard.writeText('7YBqjiP6M5BqA7P6P9L3L3L3L3L3L3L3L3L3L3L6SJyuD'); alert('Wallet Copied!')" class="w-full bg-yellow-600 hover:bg-yellow-700 py-4 rounded-xl font-bold transition">
-                <span lang="en">Copy Wallet Address</span><span lang="my">လိပ်စာကို ကူးယူပါ</span>
-            </button>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <section class="py-20 px-6 text-center">
-        <h2 class="text-4xl font-extrabold mb-12 uppercase tracking-tighter">Tokenomics</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto">
-            <div class="glass p-6 rounded-2xl">
-                <p class="text-[10px] font-bold text-gray-500 uppercase">Supply</p>
-                <p class="text-xl font-bold">1.001 Billion</p>
-            </div>
-            <div class="glass p-6 rounded-2xl">
-                <p class="text-[10px] font-bold text-gray-500 uppercase">Symbol</p>
-                <p class="text-xl font-bold text-purple-400">$SHWE</p>
-            </div>
-            <div class="glass p-6 rounded-2xl">
-                <p class="text-[10px] font-bold text-gray-500 uppercase">Tax Fee</p>
-                <p class="text-xl font-bold text-green-400">0.25%</p>
-            </div>
-            <div class="glass p-6 rounded-2xl border-green-500/20">
-                <p class="text-[10px] font-bold text-gray-500 uppercase">Mint Authority</p>
-                <p class="text-xl font-bold">Revoked</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 px-6 max-w-4xl mx-auto">
-        <h2 class="text-4xl font-extrabold text-center mb-16 uppercase tracking-tighter">Roadmap 2026 - 2030</h2>
-        <div class="space-y-12 relative border-l border-gray-800 ml-4 pl-10">
-            <div class="relative">
-                <div class="absolute -left-[50px] top-0 w-5 h-5 bg-purple-600 rounded-full shadow-lg shadow-purple-600/50"></div>
-                <h3 class="text-xl font-bold text-purple-400">Phase 1: Foundation (Q3 2026)</h3>
-                <p class="text-sm text-gray-400 mt-2 leading-relaxed">
-                    <span lang="en">Solana Mainnet Launch, Liquidity Pool setup, and Mint Authority closure.</span>
-                    <span lang="my">Solana Mainnet ပေါ်တွင် လွှင့်တင်ခြင်း၊ Liquidity Pool တည်ဆောက်ခြင်းနှင့် Mint Authority ကို ပိတ်သိမ်းခြင်း။</span>
-                </p>
-            </div>
-            <div class="relative">
-                <div class="absolute -left-[50px] top-0 w-5 h-5 bg-gray-700 rounded-full"></div>
-                <h3 class="text-xl font-bold">Phase 2: Growth & Funding (Q1 2027)</h3>
-                <p class="text-sm text-gray-400 mt-2 leading-relaxed">
-                    <span lang="en">1,000 SOL Fundraising and Stock Investment integration for holders.</span>
-                    <span lang="my">1,000 SOL Fundraising ပြုလုပ်ခြင်းနှင့် ရင်းနှီးမြှုပ်နှံသူများအတွက် Stock Investment စနစ် စတင်ခြင်း။</span>
-                </p>
-            </div>
-            <div class="relative">
-                <div class="absolute -left-[50px] top-0 w-5 h-5 bg-gray-700 rounded-full"></div>
-                <h3 class="text-xl font-bold">Phase 3: Utility (Q3 2029)</h3>
-                <p class="text-sm text-gray-400 mt-2 leading-relaxed">
-                    <span lang="en">Merchant partnerships in Myanmar, Mobile App launch, and Dividends distribution.</span>
-                    <span lang="my">စီးပွားရေးလုပ်ငန်းရှင်များနှင့် မိတ်ဖက်ပြုခြင်း၊ Mobile App ထုတ်ဝေခြင်းနှင့် အမြတ်ဝေစုများ စတင်ခြင်း။</span>
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <footer class="py-20 px-6 border-t border-white/5 text-center bg-[#010206]">
-        <div class="flex justify-center space-x-8 mb-10">
-            <a href="https://t.me/boost/SHWE_PAY_Official" target="_blank" class="text-3xl hover:text-purple-400 transition"><i class="fab fa-telegram"></i></a>
-            <a href="https://www.facebook.com/share/1DaBL3kiNX/" target="_blank" class="text-3xl hover:text-blue-500 transition"><i class="fab fa-facebook"></i></a>
-            <a href="https://x.com/DavidGwa168323" target="_blank" class="text-3xl hover:text-white transition"><i class="fab fa-x-twitter"></i></a>
-        </div>
+    <footer class="py-20 px-6 border-t border-white/5 text-center bg-[#010206]" role="contentinfo">
+        <nav class="flex justify-center space-x-8 mb-10" aria-label="Social media links">
+            <a href="https://t.me/boost/SHWE_PAY_Official" target="_blank" rel="noopener noreferrer" class="text-3xl hover:text-purple-400 transition" aria-label="Join us on Telegram">
+                <i class="fab fa-telegram" aria-hidden="true"></i>
+            </a>
+            <a href="https://www.facebook.com/share/1DaBL3kiNX/" target="_blank" rel="noopener noreferrer" class="text-3xl hover:text-blue-500 transition" aria-label="Follow us on Facebook">
+                <i class="fab fa-facebook" aria-hidden="true"></i>
+            </a>
+            <a href="https://x.com/DavidGwa168323" target="_blank" rel="noopener noreferrer" class="text-3xl hover:text-white transition" aria-label="Follow us on X (Twitter)">
+                <i class="fab fa-x-twitter" aria-hidden="true"></i>
+            </a>
+        </nav>
         <p class="text-gray-600 text-[10px] uppercase tracking-widest">© 2026 SHWE-PAY Ecosystem. Built on Solana Blockchain.</p>
     </footer>
 
     <script>
+        /**
+         * Show toast notification
+         * @param {string} message - The message to display
+         * @param {number} duration - Duration in milliseconds
+         */
+        function showToast(message, duration = 3000) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            
+            toastMessage.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, duration);
+        }
+        
+        /**
+         * Copy text to clipboard with modern error handling
+         * @param {string} text - The text to copy
+         * @param {string} successMessage - Success message to display
+         */
+        async function copyToClipboard(text, successMessage) {
+            try {
+                // Modern Clipboard API
+                if (navigator.clipboard && window.isSecureContext) {
+                    await navigator.clipboard.writeText(text);
+                    showToast(successMessage);
+                } else {
+                    // Fallback for older browsers or non-secure contexts
+                    const textArea = document.createElement('textarea');
+                    textArea.value = text;
+                    textArea.style.position = 'absolute';
+                    textArea.style.left = '-9999px';
+                    textArea.style.opacity = '0';
+                    textArea.setAttribute('aria-hidden', 'true');
+                    document.body.appendChild(textArea);
+                    textArea.focus();
+                    textArea.select();
+                    
+                    try {
+                        const successful = document.execCommand('copy');
+                        if (successful) {
+                            showToast(successMessage);
+                        } else {
+                            throw new Error('Copy command failed');
+                        }
+                    } catch (err) {
+                        showToast('Failed to copy. Please copy manually.');
+                        console.error('Fallback copy failed:', err);
+                    } finally {
+                        document.body.removeChild(textArea);
+                    }
+                }
+            } catch (err) {
+                showToast('Failed to copy. Please copy manually.');
+                console.error('Copy failed:', err);
+            }
+        }
+        
+        /**
+         * Switch language between English and Myanmar
+         * @param {string} lang - Language code ('en' or 'my')
+         */
         function setLanguage(lang) {
-            // Toggle text visibility
-            document.querySelectorAll('[lang="en"]').forEach(el => el.style.display = (lang === 'en' ? 'inline' : 'none'));
-            document.querySelectorAll('[lang="my"]').forEach(el => el.style.display = (lang === 'my' ? 'inline' : 'none'));
-            
-            // Update button styles
-            document.getElementById('btn-en').classList.toggle('lang-active', lang === 'en');
-            document.getElementById('btn-my').classList.toggle('lang-active', lang === 'my');
-            
-            // For block elements like h1, we need 'block' instead of 'inline'
-            document.querySelectorAll('h1 [lang], p [lang], h3 [lang]').forEach(el => {
-                if (el.style.display !== 'none') {
-                    // Restore original display style if needed or keep it simple
+            // Toggle text visibility using CSS classes for better control
+            document.querySelectorAll('[lang="en"]').forEach(el => {
+                if (lang === 'en') {
+                    el.classList.remove('lang-hidden');
+                } else {
+                    el.classList.add('lang-hidden');
                 }
             });
+            
+            document.querySelectorAll('[lang="my"]').forEach(el => {
+                if (lang === 'my') {
+                    el.classList.remove('lang-hidden');
+                } else {
+                    el.classList.add('lang-hidden');
+                }
+            });
+            
+            // Update button styles and ARIA attributes
+            const btnEn = document.getElementById('btn-en');
+            const btnMy = document.getElementById('btn-my');
+            
+            btnEn.classList.toggle('lang-active', lang === 'en');
+            btnMy.classList.toggle('lang-active', lang === 'my');
+            
+            btnEn.setAttribute('aria-pressed', lang === 'en');
+            btnMy.setAttribute('aria-pressed', lang === 'my');
+            
+            // Store language preference
+            try {
+                localStorage.setItem('preferredLanguage', lang);
+            } catch (e) {
+                console.warn('Could not save language preference:', e);
+            }
         }
-        // Initial set
-        setLanguage('en');
+        
+        /**
+         * Initialize page on load
+         */
+        function initPage() {
+            // Load saved language preference or default to English
+            try {
+                const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+                setLanguage(savedLang);
+            } catch (e) {
+                console.warn('Could not load language preference:', e);
+                setLanguage('en');
+            }
+        }
+        
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initPage);
+        } else {
+            initPage();
+        }
     </script>
 </body>
 </html>
