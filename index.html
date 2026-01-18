@@ -1,92 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHWE-PAY | Official Dual Language Site</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Padauk:wght@400;700&display=swap');
-        body { font-family: 'Plus Jakarta Sans', 'Padauk', sans-serif; background-color: #03060c; color: #e2e8f0; scroll-behavior: smooth; margin: 0; }
-        .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.08); }
-        .gradient-text { background: linear-gradient(135deg, #a78bfa, #34d399); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .lang-active { background: #7c3aed !important; color: white !important; }
-        .lang-en, .lang-my { display: none; }
-        body.en-mode .lang-en { display: block; }
-        body.my-mode .lang-my { display: block; }
-        span.lang-en, span.lang-my { display: none; }
-        body.en-mode span.lang-en { display: inline; }
-        body.my-mode span.lang-my { display: inline; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SHWE-PAY | Solana Payment Token</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background: #0b0f19; color: #ffffff; line-height: 1.6; scroll-behavior: smooth; }
+    header { padding: 80px 20px; text-align: center; background: linear-gradient(135deg, #7f5af0, #2cb67d); }
+    section { padding: 60px 20px; max-width: 1100px; margin: auto; }
+    .card { background: #161b2e; padding: 25px; border-radius: 12px; margin-bottom: 20px; text-align: center; }
+    .btn { display: inline-block; margin: 10px; padding: 14px 30px; background: #ffffff; color: #0b0f19; border-radius: 30px; text-decoration: none; font-weight: bold; cursor: pointer; border: none; }
+    .btn-outline { background: transparent; border: 2px solid #ffffff; color: #ffffff; }
+    footer { background: #070a12; padding: 50px 20px; text-align: center; }
+    .social-link { margin: 0 15px; display: inline-block; vertical-align: middle; }
+  </style>
 </head>
-<body class="en-mode">
+<body>
 
-    <nav class="fixed w-full z-50 glass py-4 px-6 flex justify-between items-center">
-        <div class="text-2xl font-extrabold gradient-text">$SHWE PAY</div>
-        <div class="flex border border-gray-700 rounded-lg overflow-hidden text-xs font-bold bg-black/20">
-            <button onclick="setLanguage('en')" id="btn-en" class="px-4 py-2 transition lang-active">EN</button>
-            <button onclick="setLanguage('my')" id="btn-my" class="px-4 py-2 transition hover:bg-gray-800">မြန်မာ</button>
-        </div>
-    </nav>
+<header>
+  <h1>SHWE-PAY</h1>
+  <p>Fast, secure, and low-fee digital payments powered by the Solana blockchain.</p>
+  <div style="margin-top: 25px;">
+    <a href="#how-to-buy" class="btn">How to Buy</a>
+    <a href="https://dexscreener.com/solana/AFBuHorDPnseM2NQNrmFtPBaJUYuKNHksTJw4nfpyeQW" target="_blank" class="btn btn-outline">View Live Chart</a>
+  </div>
+</header>
 
-    <section class="pt-40 pb-20 px-6 text-center">
-        <h1 class="text-4xl md:text-7xl font-extrabold mb-6 leading-tight">
-            <div class="lang-en">Invest in Myanmar <br><span class="gradient-text">Digital Era</span></div>
-            <div class="lang-my">မြန်မာ့ <span class="gradient-text">ဒီဂျစ်တယ်ခေတ်</span> <br>ရင်းနှီးမြှုပ်နှံမှု</div>
-        </h1>
-        <p class="max-w-3xl mx-auto text-gray-400 text-lg mb-10">
-            <span class="lang-en">Official Solana Payment & Investment Token.</span>
-            <span class="lang-my">Solana အခြေခံ ငွေပေးချေမှုနှင့် ရင်းနှီးမြှုပ်နှံမှု တိုကင်။</span>
-        </p>
-        <div class="max-w-2xl mx-auto glass p-4 rounded-2xl mb-10">
-            <p class="text-[10px] text-gray-500 font-bold uppercase mb-2">Contract Address (CA)</p>
-            <code class="text-green-400 text-xs md:text-sm break-all font-mono">AFBuHorDPnsaM2MQfIrmPtPBs3UYuKfiHksTJe4nfpueQw</code>
-        </div>
-    </section>
+<section id="contract-address">
+  <div class="card" style="border: 1px solid #7f5af0;">
+    <p style="color: #9aa4bf;">Official Contract Address</p>
+    <code style="display: block; margin: 10px 0; color: #2cb67d; word-break: break-all;">AFBuHorDPnseM2NQNrmFtPBaJUYuKNHksTJw4nfpyeQW</code>
+    <button onclick="navigator.clipboard.writeText('AFBuHorDPnseM2NQNrmFtPBaJUYuKNHksTJw4nfpyeQW'); alert('Copied!')" class="btn" style="padding: 8px 20px;">Copy Address</button>
+  </div>
+</section>
 
-    <section class="py-20 px-6 max-w-4xl mx-auto">
-        <h2 class="text-3xl font-extrabold text-center mb-16 uppercase">
-            <span class="lang-en">ROADMAP 2026 – 2030</span>
-            <span class="lang-my">လုပ်ငန်းလမ်းပြမြေပုံ ၂၀၂၆ – ၂၀၃၀</span>
-        </h2>
-        <div class="space-y-12 relative border-l-2 border-purple-500/30 ml-4 pl-10">
-            <div class="relative">
-                <div class="absolute -left-[51px] top-0 w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center">
-                    <i class="fas fa-rocket text-white"></i>
-                </div>
-                <h3 class="text-xl font-bold text-purple-400">Phase 1: Foundation (Q3 2026)</h3>
-                <ul class="text-gray-400 text-sm mt-2 list-disc ml-5">
-                    <li><span class="lang-en">Official Token Launch.</span><span class="lang-my">တိုကင် စတင်လွှင့်တင်ခြင်း။</span></li>
-                    <li><span class="lang-en">Liquidity Pool setup.</span><span class="lang-my">Liquidity Pool တည်ဆောက်ခြင်း။</span></li>
-                    <li><span class="lang-en">Revoking Mint Authority.</span><span class="lang-my">Mint Authority ကို ပိတ်သိမ်းခြင်း။</span></li>
-                </ul>
-            </div>
-            </div>
-    </section>
+<section id="how-to-buy">
+  <h2>How to Buy</h2>
+  <div class="card">
+    <p>1. Create a Wallet (Phantom or Solflare)</p>
+    <p>2. Send SOL to your wallet</p>
+    <p>3. Swap SOL for SHWE-PAY on Raydium or Jupiter</p>
+  </div>
+</section>
 
-    <footer class="py-12 px-6 border-t border-white/5 text-center bg-black">
-        <div class="flex justify-center space-x-10 mb-8">
-            <a href="https://t.me/boost/SHWE_PAY_Official" target="_blank" class="text-3xl hover:text-purple-400"><i class="fab fa-telegram"></i></a>
-            <a href="https://www.facebook.com/share/1DaBL3kiNX/" target="_blank" class="text-3xl hover:text-blue-500"><i class="fab fa-facebook"></i></a>
-        </div>
-        <p class="text-gray-600 text-xs uppercase font-bold">© 2026 SHWE-PAY Ecosystem</p>
-    </footer>
+<footer id="footer">
+  <div style="margin-bottom: 30px;">
+    <a href="https://x.com/DavidGwa168323" target="_blank" class="social-link">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+    <a href="https://t.me/SHWE_PAY_Official/1" target="_blank" class="social-link">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M11.944 0C5.346 0 0 5.346 0 11.944c0 6.598 5.346 11.944 11.944 11.944 6.598 0 11.944-5.346 11.944-11.944C23.888 5.346 18.542 0 11.944 0zm5.835 8.169l-1.957 9.228c-.148.651-.534.812-1.079.506l-3.003-2.213-1.448 1.393c-.161.161-.295.295-.605.295l.214-3.053 5.556-5.019c.241-.214-.053-.333-.374-.121l-6.868 4.324-2.96-.925c-.643-.201-.655-.643.134-.951l11.565-4.455c.535-.195.998.127.821.99z"/></svg>
+    </a>
+  </div>
+  <p style="color: #9aa4bf;">&copy; 2026 SHWE-PAY Ecosystem. Built on Solana.</p>
+</footer>
 
-    <script>
-        function setLanguage(lang) {
-            if (lang === 'en') {
-                document.body.classList.add('en-mode');
-                document.body.classList.remove('my-mode');
-                document.getElementById('btn-en').classList.add('lang-active');
-                document.getElementById('btn-my').classList.remove('lang-active');
-            } else {
-                document.body.classList.add('my-mode');
-                document.body.classList.remove('en-mode');
-                document.getElementById('btn-my').classList.add('lang-active');
-                document.getElementById('btn-en').classList.remove('lang-active');
-            }
-        }
-    </script>
 </body>
 </html>
