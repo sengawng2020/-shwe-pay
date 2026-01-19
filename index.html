@@ -3,309 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>$SHWE-PAY - The Future of Fintech in Myanmar</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>SHWE-PAY | Professional Solana Payment Ecosystem</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #030712; color: #f3f4f6; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .gradient-text { background: linear-gradient(135deg, #7f5af0, #2cb67d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <span class="logo-symbol">$</span>
-                <span class="logo-text">SHWE-PAY</span>
-            </div>
-            <div class="nav-links">
-                <a href="#hero">Home</a>
-                <a href="#value-prop">Features</a>
-                <a href="#reserve-model">Reserve Model</a>
-                <a href="#dashboard">Dashboard</a>
-                <a href="#contact">Contact</a>
-            </div>
+
+    <nav class="fixed w-full z-50 glass py-4 px-6 flex justify-between items-center">
+        <div class="text-2xl font-bold gradient-text underline decoration-indigo-500">SHWE-PAY</div>
+        <div class="hidden md:flex space-x-8">
+            <a href="#about" class="hover:text-purple-400 transition">About</a>
+            <a href="#tokenomics" class="hover:text-purple-400 transition">Tokenomics</a>
+            <a href="#roadmap" class="hover:text-purple-400 transition">Roadmap</a>
         </div>
+        <a href="https://dexscreener.com/solana/AFBuHorDPnseM2NQNrmFtPBaJUYuKNHksTJw4nfpyeQW" target="_blank" class="bg-purple-600 hover:bg-purple-700 px-5 py-2 rounded-full font-bold transition">Buy Now</a>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero-section">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="hero-title">
-                    <span class="gradient-text">$SHWE-PAY</span>
-                    <br>The Future of Fintech in Myanmar
-                </h1>
-                <p class="hero-subtitle">
-                    Unlock the power of Solana-based finance with secure, non-custodial payments. 
-                    Experience near-zero fees and instant transactions.
-                </p>
-                <div class="hero-buttons">
-                    <button class="btn btn-primary">Get Started</button>
-                    <button class="btn btn-secondary">Learn More</button>
-                </div>
+    <section class="pt-32 pb-20 px-6 text-center">
+        <h1 class="text-5xl md:text-7xl font-bold mb-6">The Future of <span class="gradient-text">Myanmar Fintech</span></h1>
+        <p class="max-w-2xl mx-auto text-gray-400 text-lg mb-10">Secure, non-custodial payment solution built on the high-speed Solana blockchain for instant global transactions.</p>
+        <div class="flex flex-wrap justify-center gap-4">
+            <div class="glass p-4 rounded-xl flex items-center gap-3">
+                <span class="text-gray-400 text-sm">Official CA:</span>
+                <code class="text-green-400 font-mono text-sm break-all">AFBuHorDPnseM2NQNrmFtPBaJUYuKNHksTJw4nfpyeQW</code>
+                <button onclick="navigator.clipboard.writeText('AFBuHorDPnseM2NQNrmFtPBaJUYuKNHksTJw4nfpyeQW'); alert('Address Copied!')" class="text-white hover:text-purple-400"><i class="fas fa-copy"></i></button>
             </div>
-            <div class="hero-visual">
-                <div id="coin-container"></div>
-                <div class="glass-card">
-                    <h3 class="card-title">Real-Time Market</h3>
-                    <div class="stock-ticker" id="stock-ticker">
-                        <div class="stock-item">
-                            <span class="stock-name">SOL/USD</span>
-                            <span class="stock-price positive">$102.45</span>
-                            <span class="stock-change positive">+2.34%</span>
-                        </div>
-                        <div class="stock-item">
-                            <span class="stock-name">BTC/USD</span>
-                            <span class="stock-price positive">$43,250</span>
-                            <span class="stock-change positive">+1.23%</span>
-                        </div>
-                        <div class="stock-item">
-                            <span class="stock-name">ETH/USD</span>
-                            <span class="stock-price negative">$2,450</span>
-                            <span class="stock-change negative">-0.45%</span>
-                        </div>
-                        <div class="stock-item">
-                            <span class="stock-name">AAPL</span>
-                            <span class="stock-price positive">$185.50</span>
-                            <span class="stock-change positive">+0.75%</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="hero-background">
-            <div class="grid-overlay"></div>
         </div>
     </section>
 
-    <!-- Value Proposition Section -->
-    <section id="value-prop" class="value-section">
-        <div class="container">
-            <h2 class="section-title">Why Choose <span class="gradient-text">$SHWE-PAY</span>?</h2>
-            <div class="value-grid">
-                <div class="value-card">
-                    <div class="value-icon">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h3>Fort Knox Security</h3>
-                    <p>Multi-layer encryption and non-custodial architecture ensure your assets remain secure. Built on Solana's battle-tested blockchain.</p>
-                    <ul class="feature-list">
-                        <li>256-bit AES encryption</li>
-                        <li>Multi-signature wallets</li>
-                        <li>Cold storage integration</li>
-                        <li>Real-time fraud detection</li>
-                    </ul>
+    <section id="tokenomics" class="py-20 px-6 bg-gray-900/30">
+        <h2 class="text-4xl font-bold text-center mb-16">Tokenomics</h2>
+        <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <div class="glass p-8 rounded-2xl text-center">
+                <div class="text-purple-500 text-3xl mb-4 font-bold">1 Billion</div>
+                <div class="text-gray-400">Total Supply</div>
+            </div>
+            <div class="glass p-8 rounded-2xl text-center border-purple-500/50">
+                <div class="text-purple-500 text-3xl mb-4 font-bold">0%</div>
+                <div class="text-gray-400">Tax Fee</div>
+            </div>
+            <div class="glass p-8 rounded-2xl text-center">
+                <div class="text-purple-500 text-3xl mb-4 font-bold">100%</div>
+                <div class="text-gray-400">Liquidity Burnt</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="roadmap" class="py-20 px-6">
+        <h2 class="text-4xl font-bold text-center mb-16">Roadmap</h2>
+        <div class="max-w-4xl mx-auto space-y-6">
+            <div class="flex gap-6 items-start">
+                <div class="bg-purple-600 p-3 rounded-full mt-1">1</div>
+                <div>
+                    <h3 class="text-xl font-bold">Phase 1: Launch</h3>
+                    <p class="text-gray-400">Token creation, website launch, and community building on Telegram & X.</p>
                 </div>
-                <div class="value-card">
-                    <div class="value-icon">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h3>Lightning Speed</h3>
-                    <p>Powered by Solana's high-performance blockchain. Transactions finalize in under 400ms with near-zero fees.</p>
-                    <ul class="feature-list">
-                        <li>65,000+ TPS capacity</li>
-                        <li>Sub-second finality</li>
-                        <li>$0.00025 avg. fee</li>
-                        <li>24/7 availability</li>
-                    </ul>
+            </div>
+            <div class="flex gap-6 items-start border-l-2 border-gray-800 ml-5 pl-11 py-4">
+                <div class="bg-gray-800 p-3 rounded-full mt-1 text-gray-500">2</div>
+                <div>
+                    <h3 class="text-xl font-bold">Phase 2: Growth</h3>
+                    <p class="text-gray-400">Listing on DEX trackers, marketing campaigns, and strategic partnerships.</p>
+                </div>
+            </div>
+            <div class="flex gap-6 items-start">
+                <div class="bg-gray-800 p-3 rounded-full mt-1 text-gray-500">3</div>
+                <div>
+                    <h3 class="text-xl font-bold">Phase 3: Utility</h3>
+                    <p class="text-gray-400">Mobile app integration and merchant payment gateway testing.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Reserve Model Section -->
-    <section id="reserve-model" class="reserve-section">
-        <div class="container">
-            <h2 class="section-title">The <span class="gradient-text">30/40/30 Reserve Model</span></h2>
-            <p class="section-subtitle">Our innovative asset-backed model ensures stability and transparency</p>
-            
-            <div class="reserve-layout">
-                <div class="reserve-visual">
-                    <canvas id="reserveChart"></canvas>
-                </div>
-                <div class="reserve-details">
-                    <div class="reserve-item">
-                        <div class="reserve-header">
-                            <div class="reserve-percentage">30%</div>
-                            <h3>Stablecoins</h3>
-                        </div>
-                        <p>USDC and USDT for stability and liquidity. Ensures reliable value preservation.</p>
-                        <div class="reserve-bar">
-                            <div class="reserve-fill" style="width: 30%; background: linear-gradient(90deg, #FFD700 0%, #FFA500 100%);"></div>
-                        </div>
-                    </div>
-                    <div class="reserve-item">
-                        <div class="reserve-header">
-                            <div class="reserve-percentage">40%</div>
-                            <h3>US Treasuries</h3>
-                        </div>
-                        <p>Short-term T-Bills and bonds for secure yield generation and capital protection.</p>
-                        <div class="reserve-bar">
-                            <div class="reserve-fill" style="width: 40%; background: linear-gradient(90deg, #4169E1 0%, #1E90FF 100%);"></div>
-                        </div>
-                    </div>
-                    <div class="reserve-item">
-                        <div class="reserve-header">
-                            <div class="reserve-percentage">30%</div>
-                            <h3>SOL & Crypto</h3>
-                        </div>
-                        <p>Solana and diversified crypto assets for growth and ecosystem alignment.</p>
-                        <div class="reserve-bar">
-                            <div class="reserve-fill" style="width: 30%; background: linear-gradient(90deg, #9945FF 0%, #14F195 100%);"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="reserve-benefits">
-                <div class="benefit-card">
-                    <span class="benefit-icon">🛡️</span>
-                    <h4>Risk Mitigation</h4>
-                    <p>Diversified across asset classes</p>
-                </div>
-                <div class="benefit-card">
-                    <span class="benefit-icon">📈</span>
-                    <h4>Yield Generation</h4>
-                    <p>Earn passive income on reserves</p>
-                </div>
-                <div class="benefit-card">
-                    <span class="benefit-icon">💎</span>
-                    <h4>Stability</h4>
-                    <p>Weather market volatility</p>
-                </div>
-                <div class="benefit-card">
-                    <span class="benefit-icon">🔍</span>
-                    <h4>Transparency</h4>
-                    <p>Publicly auditable reserves</p>
-                </div>
-            </div>
+    <footer class="py-12 px-6 border-t border-gray-800 text-center">
+        <div class="flex justify-center space-x-6 mb-8">
+            <a href="https://x.com/DavidGwa168323" target="_blank" class="text-3xl hover:text-purple-400 transition"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://t.me/SHWE_PAY_Official/1" target="_blank" class="text-3xl hover:text-purple-400 transition"><i class="fab fa-telegram"></i></a>
         </div>
-    </section>
-
-    <!-- Transparency Dashboard Section -->
-    <section id="dashboard" class="dashboard-section">
-        <div class="container">
-            <h2 class="section-title">
-                <span class="gradient-text">Transparency Dashboard</span>
-            </h2>
-            <p class="section-subtitle">Real-time visibility into our reserves and operations</p>
-            
-            <div class="dashboard-grid">
-                <div class="dashboard-card">
-                    <div class="card-header">
-                        <h3>Total Value Locked</h3>
-                        <span class="status-badge active">Live</span>
-                    </div>
-                    <div class="metric-value">$12,450,000</div>
-                    <div class="metric-change positive">+5.2% (24h)</div>
-                    <canvas id="tvlChart" class="mini-chart"></canvas>
-                </div>
-                
-                <div class="dashboard-card">
-                    <div class="card-header">
-                        <h3>Active Users</h3>
-                        <span class="status-badge active">Live</span>
-                    </div>
-                    <div class="metric-value">45,678</div>
-                    <div class="metric-change positive">+12.3% (24h)</div>
-                    <canvas id="usersChart" class="mini-chart"></canvas>
-                </div>
-                
-                <div class="dashboard-card">
-                    <div class="card-header">
-                        <h3>Transactions (24h)</h3>
-                        <span class="status-badge active">Live</span>
-                    </div>
-                    <div class="metric-value">128,945</div>
-                    <div class="metric-change positive">+8.7% (24h)</div>
-                    <canvas id="txChart" class="mini-chart"></canvas>
-                </div>
-                
-                <div class="dashboard-card">
-                    <div class="card-header">
-                        <h3>Reserve Health</h3>
-                        <span class="status-badge active">Optimal</span>
-                    </div>
-                    <div class="metric-value">98.5%</div>
-                    <div class="metric-change positive">Fully Collateralized</div>
-                    <div class="health-indicator">
-                        <div class="health-bar">
-                            <div class="health-fill" style="width: 98.5%;"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="audit-info">
-                <h3>Third-Party Audits</h3>
-                <div class="audit-grid">
-                    <div class="audit-badge">
-                        <span class="audit-icon">✓</span>
-                        <div>
-                            <strong>CertiK</strong>
-                            <p>Smart Contract Audit</p>
-                        </div>
-                    </div>
-                    <div class="audit-badge">
-                        <span class="audit-icon">✓</span>
-                        <div>
-                            <strong>Quantstamp</strong>
-                            <p>Security Review</p>
-                        </div>
-                    </div>
-                    <div class="audit-badge">
-                        <span class="audit-icon">✓</span>
-                        <div>
-                            <strong>PwC</strong>
-                            <p>Reserve Attestation</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <div class="logo">
-                        <span class="logo-symbol">$</span>
-                        <span class="logo-text">SHWE-PAY</span>
-                    </div>
-                    <p>The Future of Fintech in Myanmar</p>
-                </div>
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Product</h4>
-                        <a href="#hero">Features</a>
-                        <a href="#reserve-model">Reserve Model</a>
-                        <a href="#dashboard">Dashboard</a>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Company</h4>
-                        <a href="#about">About Us</a>
-                        <a href="#careers">Careers</a>
-                        <a href="#contact">Contact</a>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Legal</h4>
-                        <a href="#privacy">Privacy Policy</a>
-                        <a href="#terms">Terms of Service</a>
-                        <a href="#compliance">Compliance</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 $SHWE-PAY. All rights reserved. Built on Solana.</p>
-            </div>
-        </div>
+        <p class="text-gray-500">© 2026 SHWE-PAY Ecosystem. Powered by Solana.</p>
     </footer>
 
-    <script src="script.js"></script>
 </body>
 </html>
