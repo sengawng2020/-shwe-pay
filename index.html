@@ -3,34 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHWE-PAY | Solana Payment Ecosystem</title>
+    <title>SHWE-PAY | Professional Solana Payment Ecosystem</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background-color: #030712; color: #f3f4f6; font-family: sans-serif; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #030712; color: #f3f4f6; }
         .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
         .gradient-text { background: linear-gradient(135deg, #7f5af0, #2cb67d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     </style>
 </head>
 <body>
+
     <nav class="fixed w-full z-50 glass py-4 px-6 flex justify-between items-center">
-        <div class="text-2xl font-bold gradient-text">SHWE-PAY</div>
-        <a href="https://dexscreener.com/solana/AFBuHorDPnseM2NQNrmFtPBaJUYuKNHksTJw4nfpyeQW" target="_blank" class="bg-purple-600 px-5 py-2 rounded-full font-bold">Buy Now</a>
+        <div class="text-2xl font-bold gradient-text underline decoration-indigo-500">SHWE-PAY</div>
+        <div class="hidden md:flex space-x-8">
+            <a href="#about" class="hover:text-purple-400 transition">About</a>
+            <a href="#tokenomics" class="hover:text-purple-400 transition">Tokenomics</a>
+            <a href="#roadmap" class="hover:text-purple-400 transition">Roadmap</a>
+        </div>
+        <a href="https://dexscreener.com/solana/AFBuHorDPnseM2NQNrmFtPBaJUYuKNHksTJw4nfpyeQW" target="_blank" class="bg-purple-600 hover:bg-purple-700 px-5 py-2 rounded-full font-bold transition">Buy Now</a>
     </nav>
-    <section class="pt-40 pb-20 px-6 text-center">
+
+    <section class="pt-32 pb-20 px-6 text-center">
         <h1 class="text-5xl md:text-7xl font-bold mb-6">The Future of <span class="gradient-text">Myanmar Fintech</span></h1>
-        <p class="max-w-2xl mx-auto text-gray-400 text-lg mb-10">Fast and secure payments on Solana.</p>
-        <div class="glass p-4 rounded-xl max-w-lg mx-auto flex items-center justify-between gap-3">
-            <code class="text-green-400 text-xs break-all">AFBuHorDPnseM2NQNrmFtPBaJUYuKNHksTJw4nfpyeQW</code>
-            <button onclick="navigator.clipboard.writeText('AFBuHorDPnseM2NQNrmFtPBaJUYuKNHksTJw4nfpyeQW'); alert('Copied!')" class="hover:text-purple-400"><i class="fas fa-copy"></i></button>
+        <p class="max-w-2xl mx-auto text-gray-400 text-lg mb-10">Secure, non-custodial payment solution built on the high-speed Solana blockchain for instant global transactions.</p>
+        <div class="flex flex-wrap justify-center gap-4">
+            <div class="glass p-4 rounded-xl flex items-center gap-3">
+                <span class="text-gray-400 text-sm">Official CA:</span>
+                <code class="text-green-400 font-mono text-sm break-all">AFBuHorDPnseM2NQNrmFtPBaJUYuKNHksTJw4nfpyeQW</code>
+                <button onclick="navigator.clipboard.writeText('AFBuHorDPnseM2NQNrmFtPBaJUYuKNHksTJw4nfpyeQW'); alert('Address Copied!')" class="text-white hover:text-purple-400"><i class="fas fa-copy"></i></button>
+            </div>
         </div>
     </section>
-    <footer class="py-20 border-t border-gray-800 text-center">
-        <div class="flex justify-center space-x-8 mb-6">
-            <a href="https://x.com/DavidGwa168323" target="_blank" class="text-3xl hover:text-purple-400"><i class="fab fa-x-twitter"></i></a>
-            <a href="https://t.me/SHWE_PAY_Official/1" target="_blank" class="text-3xl hover:text-purple-400"><i class="fab fa-telegram"></i></a>
+
+    <section id="tokenomics" class="py-20 px-6 bg-gray-900/30">
+        <h2 class="text-4xl font-bold text-center mb-16">Tokenomics</h2>
+        <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <div class="glass p-8 rounded-2xl text-center">
+                <div class="text-purple-500 text-3xl mb-4 font-bold">1 Billion</div>
+                <div class="text-gray-400">Total Supply</div>
+            </div>
+            <div class="glass p-8 rounded-2xl text-center border-purple-500/50">
+                <div class="text-purple-500 text-3xl mb-4 font-bold">0%</div>
+                <div class="text-gray-400">Tax Fee</div>
+            </div>
+            <div class="glass p-8 rounded-2xl text-center">
+                <div class="text-purple-500 text-3xl mb-4 font-bold">100%</div>
+                <div class="text-gray-400">Liquidity Burnt</div>
+            </div>
         </div>
-        <p class="text-gray-500">© 2026 SHWE-PAY Ecosystem. Built on Solana.</p>
+    </section>
+
+    <section id="roadmap" class="py-20 px-6">
+        <h2 class="text-4xl font-bold text-center mb-16">Roadmap</h2>
+        <div class="max-w-4xl mx-auto space-y-6">
+            <div class="flex gap-6 items-start">
+                <div class="bg-purple-600 p-3 rounded-full mt-1">1</div>
+                <div>
+                    <h3 class="text-xl font-bold">Phase 1: Launch</h3>
+                    <p class="text-gray-400">Token creation, website launch, and community building on Telegram & X.</p>
+                </div>
+            </div>
+            <div class="flex gap-6 items-start border-l-2 border-gray-800 ml-5 pl-11 py-4">
+                <div class="bg-gray-800 p-3 rounded-full mt-1 text-gray-500">2</div>
+                <div>
+                    <h3 class="text-xl font-bold">Phase 2: Growth</h3>
+                    <p class="text-gray-400">Listing on DEX trackers, marketing campaigns, and strategic partnerships.</p>
+                </div>
+            </div>
+            <div class="flex gap-6 items-start">
+                <div class="bg-gray-800 p-3 rounded-full mt-1 text-gray-500">3</div>
+                <div>
+                    <h3 class="text-xl font-bold">Phase 3: Utility</h3>
+                    <p class="text-gray-400">Mobile app integration and merchant payment gateway testing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 px-6 border-t border-gray-800 text-center">
+        <div class="flex justify-center space-x-6 mb-8">
+            <a href="https://x.com/DavidGwa168323" target="_blank" class="text-3xl hover:text-purple-400 transition"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://t.me/SHWE_PAY_Official/1" target="_blank" class="text-3xl hover:text-purple-400 transition"><i class="fab fa-telegram"></i></a>
+        </div>
+        <p class="text-gray-500">© 2026 SHWE-PAY Ecosystem. Powered by Solana.</p>
     </footer>
+
 </body>
 </html>
