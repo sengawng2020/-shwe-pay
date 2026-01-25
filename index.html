@@ -1,217 +1,448 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- BASIC -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
   <title>SHWE-PAY | Solana Payment Token</title>
-
-  <!-- SEO -->
-  <meta name="description" content="SHWE-PAY is a fast, secure, low-fee Solana-based digital payment token built for real-world transactions.">
-  <meta name="keywords" content="SHWE-PAY, Solana token, crypto payments, SPL token, Solana blockchain">
-
-  <!-- SOCIAL PREVIEW -->
-  <meta property="og:title" content="SHWE-PAY | Solana Payment Token">
-  <meta property="og:description" content="Fast, secure, and low-fee digital payments powered by Solana.">
-  <meta property="og:type" content="website">
-
-  <!-- SECURITY HEADERS -->
-  <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; img-src 'self' https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src https:;">
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <meta http-equiv="X-Frame-Options" content="DENY">
-  <meta http-equiv="X-XSS-Protection" content="1; mode=block">
-  <meta name="referrer" content="no-referrer">
-
-  <!-- FONT -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <!-- STYLE -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', Arial, sans-serif;
-      background: #0b0f19;
-      color: #ffffff;
-      line-height: 1.6;
-      scroll-behavior: smooth;
+    :root {
+      --bg: #050816;
+      --card: #0b1020;
+      --accent: #f5c542;
+      --text: #f5f5f5;
+      --muted: #9ca3af;
     }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 45%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
     header {
-      padding: 90px 20px;
-      text-align: center;
-      background: linear-gradient(135deg, #7f5af0, #2cb67d);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: rgba(5, 8, 22, 0.85);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
     }
-
-    section {
-      padding: 70px 20px;
+    .nav {
       max-width: 1100px;
-      margin: auto;
+      margin: 0 auto;
+      padding: 0.9rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-
-    h1, h2 {
-      margin-bottom: 20px;
-    }
-
-    .card {
-      background: #161b2e;
-      padding: 30px;
-      border-radius: 14px;
-      margin-bottom: 25px;
-      text-align: center;
-      box-shadow: 0 12px 35px rgba(0,0,0,0.35);
-    }
-
-    .btn {
-      display: inline-block;
-      margin: 12px;
-      padding: 14px 34px;
-      background: #ffffff;
-      color: #0b0f19;
-      border-radius: 30px;
-      text-decoration: none;
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
       font-weight: 700;
-      border: none;
-      cursor: pointer;
-      transition: all 0.2s ease;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+    .logo-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #facc15, #f97316 40%, #a855f7 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: #020617;
+      font-weight: 800;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      font-size: 0.9rem;
+    }
+    .nav-links a {
+      color: var(--muted);
+    }
+    .nav-links a:hover {
+      color: var(--accent);
     }
 
-    .btn:hover {
-      transform: translateY(-2px);
+    .hero {
+      max-width: 1100px;
+      margin: 2.5rem auto 3rem;
+      padding: 0 1.25rem;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+    .hero-eyebrow {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .hero-title {
+      font-size: clamp(2.4rem, 4vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .hero-title span {
+      background: linear-gradient(120deg, #facc15, #f97316, #22c55e, #38bdf8);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .hero-subtitle {
+      color: var(--muted);
+      font-size: 0.98rem;
+      max-width: 32rem;
+      margin-bottom: 1.5rem;
+    }
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.75rem;
+    }
+    .badge {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      padding: 0.25rem 0.7rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+    .btn-primary,
+    .btn-secondary {
+      border-radius: 999px;
+      padding: 0.6rem 1.3rem;
+      font-size: 0.9rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .btn-primary {
+      background: linear-gradient(120deg, #facc15, #f97316);
+      color: #020617;
+      font-weight: 600;
+    }
+    .btn-primary:hover {
+      filter: brightness(1.05);
+    }
+    .btn-secondary {
+      background: transparent;
+      border-color: rgba(148, 163, 184, 0.5);
+      color: var(--muted);
+    }
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .hero-kpis {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .hero-kpis strong {
+      display: block;
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top left, rgba(250, 204, 21, 0.18), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.18), transparent 55%),
+                  var(--card);
+      border-radius: 1.5rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      padding: 1.5rem;
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.9);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .pill {
+      border-radius: 999px;
+      padding: 0.2rem 0.6rem;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      font-size: 0.7rem;
+    }
+    .token-symbol {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+    }
+    .token-address {
+      font-family: "SF Mono", ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      word-break: break-all;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+      margin: 1rem 0 1.25rem;
+      font-size: 0.8rem;
+    }
+    .stat {
+      padding: 0.7rem 0.8rem;
+      border-radius: 0.9rem;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+    }
+    .stat-label {
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+    }
+    .stat-value {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .stat-pill {
+      font-size: 0.7rem;
+      color: #22c55e;
+    }
+    .chart {
+      margin-top: 0.5rem;
+      height: 80px;
+      border-radius: 0.9rem;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(34, 197, 94, 0.05));
+      position: relative;
+      overflow: hidden;
+    }
+    .chart-line {
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='160' height='80' viewBox='0 0 160 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline fill='none' stroke='%23facc15' stroke-width='2' points='0,60 20,55 40,50 60,40 80,45 100,30 120,35 140,20 160,25'/%3E%3C/svg%3E");
+      background-size: cover;
       opacity: 0.9;
     }
-
-    .btn-outline {
-      background: transparent;
-      border: 2px solid #ffffff;
-      color: #ffffff;
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 0.75rem;
     }
-
-    footer {
-      background: #070a12;
-      padding: 60px 20px;
-      text-align: center;
+    .footer-links {
+      max-width: 1100px;
+      margin: 0 auto 2.5rem;
+      padding: 0 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--muted);
+      border-top: 1px solid rgba(148, 163, 184, 0.25);
+      padding-top: 1.5rem;
     }
-
-    .social-link {
-      margin: 0 15px;
-      display: inline-block;
+    .footer-links a {
+      color: var(--muted);
     }
-
-    code {
-      word-break: break-all;
-      color: #2cb67d;
-      font-size: 15px;
-    }
-
-    .muted {
-      color: #9aa4bf;
-      font-size: 14px;
+    .footer-links a:hover {
+      color: var(--accent);
     }
   </style>
 </head>
-
 <body>
+  <header>
+    <nav class="nav">
+      <div class="logo">
+        <div class="logo-badge">SP</div>
+        <span>SHWE-PAY</span>
+      </div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#tokenomics">Tokenomics</a>
+        <a href="#how-to-buy">How to Buy</a>
+        <a href="#community">Community</a>
+      </div>
+    </nav>
+  </header>
 
-<!-- HERO -->
-<header>
-  <h1>SHWE-PAY</h1>
-  <p>Fast, secure, and low-fee digital payments powered by the Solana blockchain.</p>
+  <main>
+    <section class="hero">
+      <div>
+        <div class="hero-eyebrow">Solana native payment token</div>
+        <h1 class="hero-title">
+          Fast, low-fee payments with <span>SHWE-PAY</span>.
+        </h1>
+        <p class="hero-subtitle">
+          SHWE-PAY is a Solana-based token designed for instant, low-cost payments—built for real-world merchants, creators, and everyday users.
+        </p>
 
-  <div style="margin-top: 30px;">
-    <a href="#how-to-buy" class="btn">How to Buy</a>
-    <a href="https://dexscreener.com/solana/AFBuHorDPnseM2NQNrmFtPBaJUYuKNHksTJw4nfpyeQW"
-       target="_blank" class="btn btn-outline">View Live Chart</a>
-  </div>
-</header>
+        <div class="hero-badges">
+          <div class="badge">
+            <span class="badge-dot"></span>
+            Live on Solana mainnet
+          </div>
+          <div class="badge">0% buy/sell tax</div>
+          <div class="badge">Liquidity locked</div>
+        </div>
 
-<!-- ABOUT -->
-<section id="about">
-  <h2>About SHWE-PAY</h2>
-  <div class="card">
-    <p>
-      SHWE-PAY is a Solana-based digital payment token designed to enable
-      fast, secure, and low-cost peer-to-peer transactions.
-      Leveraging Solana’s high throughput and minimal fees,
-      SHWE-PAY is built for real-world usability and scalability.
-    </p>
-  </div>
-</section>
+        <div class="hero-actions">
+          <a class="btn-primary" href="#how-to-buy">
+            Buy on Raydium
+          </a>
+          <a class="btn-secondary" href="#tokenomics">
+            View tokenomics
+          </a>
+        </div>
 
-<!-- TOKEN INFO -->
-<section id="token">
-  <h2>Token Information</h2>
-  <div class="card">
-    <p><strong>Network:</strong> Solana</p>
-    <p><strong>Token Type:</strong> SPL</p>
-    <p><strong>Liquidity:</strong> Public DEX</p>
-    <p class="muted">Official Contract Address</p>
-    <code>AFBuHorDPnseM2NQNrmFtPBaJUYuKNHksTJw4nfpyeQW</code><br><br>
-    <button class="btn" onclick="copyAddress()">Copy Contract Address</button>
-  </div>
-</section>
+        <div class="hero-kpis">
+          <div>
+            <strong>1,000,000,000</strong>
+            Total supply
+          </div>
+          <div>
+            <strong>$SHWE</strong>
+            Token symbol
+          </div>
+          <div>
+            <strong>Solana</strong>
+            Network
+          </div>
+        </div>
+      </div>
 
-<!-- HOW TO BUY -->
-<section id="how-to-buy">
-  <h2>How to Buy</h2>
-  <div class="card">
-    <p>1. Install a Solana wallet (Phantom or Solflare)</p>
-    <p>2. Fund your wallet with SOL</p>
-    <p>3. Swap SOL for SHWE-PAY on Raydium or Jupiter</p>
-  </div>
-</section>
+      <aside class="hero-card">
+        <div class="hero-card-header">
+          <div>
+            <div class="token-symbol">$SHWE</div>
+            <div class="token-address">
+              9x...YOUR_TOKEN_ADDRESS_HERE...pQ
+            </div>
+          </div>
+          <div class="pill">Live market snapshot</div>
+        </div>
 
-<!-- ROADMAP -->
-<section id="roadmap">
-  <h2>Roadmap</h2>
-  <div class="card">
-    <p><strong>Phase 1:</strong> Token Launch & Liquidity</p>
-    <p><strong>Phase 2:</strong> Community Growth & Marketing</p>
-    <p><strong>Phase 3:</strong> Payment Integrations</p>
-    <p><strong>Phase 4:</strong> Ecosystem Expansion</p>
-  </div>
-</section>
+        <div class="stat-grid">
+          <div class="stat">
+            <div class="stat-label">Price</div>
+            <div class="stat-value">$0.0000</div>
+            <div class="stat-pill">+0.0% 24h</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Market cap</div>
+            <div class="stat-value">$0</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Liquidity</div>
+            <div class="stat-value">$0</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Holders</div>
+            <div class="stat-value">0</div>
+          </div>
+        </div>
 
-<!-- DISCLAIMER -->
-<section id="disclaimer">
-  <div class="card muted">
-    <p>
-      SHWE-PAY is a decentralized digital asset and not an investment product.
-      Cryptocurrency involves risk and volatility. Nothing on this website
-      constitutes financial, legal, or investment advice.
-      Always conduct your own independent research.
-    </p>
-  </div>
-</section>
+        <div class="chart">
+          <div class="chart-line"></div>
+        </div>
 
-<!-- FOOTER -->
-<footer>
-  <div style="margin-bottom: 30px;">
-    <a href="https://x.com/DavidGwa168323" target="_blank" class="social-link">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
-        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231z"/>
-      </svg>
-    </a>
+        <div class="card-footer">
+          <span>Connected: <strong>Solana</strong></span>
+          <span>View on <a href="https://solscan.io" target="_blank" rel="noreferrer">Solscan</a></span>
+        </div>
+      </aside>
+    </section>
 
-    <a href="https://t.me/SHWE_PAY_Official/1" target="_blank" class="social-link">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
-        <path d="M11.944 0C5.346 0 0 5.346 0 11.944c0 6.598 5.346 11.944 11.944 11.944 6.598 0 11.944-5.346 11.944-11.944C23.888 5.346 18.542 0 11.944 0zm5.835 8.169l-1.957 9.228c-.148.651-.534.812-1.079.506l-3.003-2.213-1.448 1.393c-.161.161-.295.295-.605.295l.214-3.053 5.556-5.019c.241-.214-.053-.333-.374-.121l-6.868 4.324-2.96-.925c-.643-.201-.655-.643.134-.951l11.565-4.455c.535-.195.998.127.821.99z"/>
-      </svg>
-    </a>
-  </div>
+    <section id="about" class="hero" style="margin-top: 0; grid-template-columns: minmax(0,1.4fr) minmax(0,1.6fr);">
+      <div>
+        <h2 style="font-size:1.4rem; margin-bottom:0.75rem;">What is SHWE-PAY?</h2>
+        <p style="color:var(--muted); font-size:0.95rem; margin-bottom:0.75rem;">
+          SHWE-PAY is a Solana payment token focused on speed, simplicity, and real-world usability. With near-zero fees and instant settlement, it’s built for merchants, platforms, and communities that need frictionless payments.
+        </p>
+        <p style="color:var(--muted); font-size:0.95rem;">
+          Integrate SHWE-PAY into your app, accept it in your store, or use it for peer-to-peer transfers—without worrying about gas spikes or slow confirmations.
+        </p>
+      </div>
+      <div id="tokenomics">
+        <h2 style="font-size:1.4rem; margin-bottom:0.75rem;">Tokenomics</h2>
+        <ul style="list-style:none; color:var(--muted); font-size:0.95rem;">
+          <li><strong>Total supply:</strong> 1,000,000,000 $SHWE</li>
+          <li><strong>Liquidity:</strong> XX% locked on Raydium</li>
+          <li><strong>Team:</strong> XX% vested</li>
+          <li><strong>Community & rewards:</strong> XX%</li>
+          <li><strong>Marketing & partnerships:</strong> XX%</li>
+        </ul>
+      </div>
+    </section>
 
-  <p class="muted">© 2026 SHWE-PAY Ecosystem. Built on Solana.</p>
-</footer>
+    <section id="how-to-buy" class="hero" style="margin-top:0;">
+      <div>
+        <h2 style="font-size:1.4rem; margin-bottom:0.75rem;">How to buy</h2>
+        <ol style="color:var(--muted); font-size:0.95rem; padding-left:1.1rem;">
+          <li><strong>Install a Solana wallet</strong> (Phantom, Solflare, etc.).</li>
+          <li><strong>Fund it with SOL</strong> from a centralized exchange.</li>
+          <li><strong>Go to Raydium</strong> and connect your wallet.</li>
+          <li><strong>Paste the SHWE-PAY contract address</strong> and swap SOL for $SHWE.</li>
+          <li><strong>Confirm the transaction</strong> and you’re done.</li>
+        </ol>
+      </div>
+      <div id="community">
+        <h2 style="font-size:1.4rem; margin-bottom:0.75rem;">Community & links</h2>
+        <ul style="color:var(--muted); font-size:0.95rem; list-style:none;">
+          <li><strong>Twitter/X:</strong> @yourhandle</li>
+          <li><strong>Telegram:</strong> t.me/yourgroup</li>
+          <li><strong>Website:</strong> this page</li>
+          <li><strong>Docs / Litepaper:</strong> link here</li>
+        </ul>
+      </div>
+    </section>
+  </main>
 
-<!-- SCRIPT -->
-<script>
-function copyAddress() {
-  const address = "AFBuHorDPnseM2NQNrmFtPBaJUYuKNHksTJw4nfpyeQW";
-  navigator.clipboard.writeText(address)
-    .then(() => alert("Contract address copied successfully."))
-    .catch(() => alert("Copy failed. Please copy manually."));
-}
-</script>
+  <footer class="footer-links">
+    <span>© <span id="year"></span> SHWE-PAY. All rights reserved.</span>
+    <span>
+      <a href="#about">About</a> ·
+      <a href="#tokenomics">Tokenomics</a> ·
+      <a href="#how-to-buy">How to buy</a>
+    </span>
+  </footer>
 
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
