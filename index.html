@@ -418,7 +418,7 @@
         <ol style="color:var(--muted); font-size:0.95rem; padding-left:1.1rem;">
           <li><strong>Install a Solana wallet</strong> (Phantom, Solflare, etc.).</li>
           <li><strong>Fund it with SOL</strong> from a centralized exchange.</li>
-          <li><strong>Go to Raydium</strong> and connect your wallet.</<li><strong>Solana Wallet:</strong> 7YBqjiZtKjCzdrPdrrGqx5Yh4WaKV5s4szgi3h6SJyUD</li>
+          <li><strong>Go to Raydium</strong> and connect your wallet.</<li><strong>Solana Wallet:</strong> </li>
 
           <li><strong>Paste the SHWE-PAY contract address</strong> and swap SOL for $SHWE.</li>
           <li><strong>Confirm the transaction</strong> and you’re done.</li>
@@ -459,7 +459,42 @@
     </span>
   </footer>
 
-  <script>
+  <script<script>
+// Wallet Connection Logic
+const connectBtn = document.getElementById('connectBtn');
+const walletAddress = document.getElementById('walletAddress');
+
+connectBtn.addEventListener('click', async () => {
+    // Phantom Wallet ရှိမရှိ စစ်ဆေးခြင်း
+    if (window.solana && window.solana.isPhantom) {
+        try {
+            // Wallet နှင့် ချိတ်ဆက်ခြင်း
+            const response = await window.solana.connect();
+            const pubKey = response.publicKey.toString();
+            
+            // UI ပြောင်းလဲခြင်း
+            walletAddress.innerText = "Connected: " + pubKey.substring(0,4) + "..." + pubKey.substring(pubKey.length - 4);
+            connectBtn.innerText = "Connected ✅";
+            connectBtn.style.background = "#2cb67d";
+            connectBtn.style.color = "#ffffff";
+        } catch (err) {
+            console.error("Connection cancelled by user");
+        }
+    } else {
+        // Phantom မရှိလျှင် install ရန် ညွှန်ကြားခြင်း
+        alert("Phantom Wallet not found. Please install it from phantom.app");
+        window.open("https://phantom.app/", "_blank");
+    }
+});
+
+// လက်ရှိပါဝင်ပြီးသား Copy Function
+function copyAddress() {
+  const address = "AFBuHorDPnseM2NQNrmFtPBaJUYuKNHksTJw4nfpyeQW";
+  navigator.clipboard.writeText(address)
+    .then(() => alert("Contract address copied successfully."))
+    .catch(() => alert("Copy failed. Please copy manually."));
+}
+</script>>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
