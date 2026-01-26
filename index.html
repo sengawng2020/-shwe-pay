@@ -1,139 +1,646 @@
-<!-- HERO SECTION -->
-<section class="hero">
-  <div>
-    <h1>Solana native payment token</h1>
-    <p>
-      SHWE-PAY is a Solana-based token designed for instant, low-cost payments—
-      built for real-world merchants, creators, and everyday users.
-    </p>
-    <ul>
-      <li>Live on Solana mainnet</li>
-      <li>0% buy/sell tax</li>
-      <li>Liquidity locked</li>
-    </ul>
-    <a href="https://raydium.io/swap" target="_blank" class="btn">Buy on Raydium</a>
-  </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Shwe Pay Token</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #050816;
+      --accent: #f5b301;
+      --accent-soft: #f8d56a;
+      --text: #f5f5f5;
+      --muted: #a0a0b8;
+    }
 
-  <div class="token-card">
-    <h3>$SHWE</h3>
-    <p class="token-address">
-      AFBuHorDPnseM2NQNrmFtPBaJUYuKNHksTJw4nfpyeQW
-    </p>
-    <a href="https://solscan.io/token/AFBuHorDPnseM2NQNrmFtPBaJUYuKNHksTJw4nfpyeQW"
-       target="_blank" class="btn-outline">View on Solscan</a>
-  </div>
-</section>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
 
-<!-- ABOUT SECTION -->
-<section id="about" class="hero">
-  <div>
-    <h2>About</h2>
-    <p>
-      SHWE-PAY is a Solana payment token focused on speed, simplicity, and real-world usability.
-      With near-zero fees and instant settlement, it’s built for merchants, platforms, and
-      communities that need frictionless payments.
-    </p>
-    <p>
-      Integrate SHWE-PAY into your app, accept it in your store, or use it for peer-to-peer
-      transfers—without worrying about gas spikes or slow confirmations.
-    </p>
-  </div>
-</section>
+    body {
+      background: radial-gradient(circle at top, #151b3a 0, #050816 45%, #02010a 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
 
-<!-- TOKENOMICS -->
-<section id="tokenomics" class="hero">
-  <div>
-    <h2>Tokenomics</h2>
-    <ul>
-      <li>Total supply: 1,000,000,000 $SHWE</li>
-      <li>Liquidity: XX% locked on Raydium</li>
-      <li>Team: XX% vested</li>
-      <li>Community & rewards: XX%</li>
-      <li>Marketing & partnerships: XX%</li>
-    </ul>
-  </div>
-</section>
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(16px);
+      background: rgba(5, 8, 22, 0.85);
+      border-bottom: 1px solid rgba(245, 179, 1, 0.15);
+    }
 
-<!-- STRATEGIC ROADMAP 2026–2027 -->
-<section id="roadmap" class="hero" style="margin-top:2rem;">
-  <div>
-    <h2 style="font-size:1.6rem; margin-bottom:1rem; color:#facc15;">
-      $SHWE-PAY | Strategic Roadmap 2026 - 2027
-    </h2>
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-    <!-- Phase 1 -->
-    <h3 style="color:#38bdf8; margin-top:1.5rem;">Phase 1: Genesis & Compliance (Q1 - Q2 2026)</h3>
-    <ul style="font-size:1rem; color:#666; line-height:1.7; padding-left:1rem;">
-      <li>• Finalize $SHWE SPL Token deployment on Solana Mainnet and verify metadata (Logo & Socials).</li>
-      <li>• Incorporate $SHWE-PAY, Inc. as a Delaware C-Corp via Stripe Atlas for global compliance.</li>
-      <li>• Initialize SOL/$SHWE Liquidity Pool on Raydium for decentralized trading.</li>
-      <li>• Submit grant proposal to Solana Foundation’s “Fintech for Emerging Markets” program.</li>
-    </ul>
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.95rem;
+    }
 
-    <!-- Phase 2 -->
-    <h3 style="color:#38bdf8; margin-top:1.5rem;">Phase 2: Ecosystem Building (Q3 - Q4 2026)</h3>
-    <ul style="font-size:1rem; color:#666; line-height:1.7; padding-left:1rem;">
-      <li>• Onboard 50 retail merchants in Myanmar to accept $SHWE via Solana Pay.</li>
-      <li>• Launch Shwe-Connect API with developer tools for e-commerce integration.</li>
-      <li>• Complete third-party smart contract audit to ensure user fund safety.</li>
-      <li>• Expand community with localized education campaigns and AMAs on Telegram and X.</li>
-    </ul>
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: conic-gradient(from 210deg, #f5b301, #f8d56a, #f5b301);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #050816;
+      font-weight: 800;
+      font-size: 0.9rem;
+      box-shadow: 0 0 18px rgba(245, 179, 1, 0.6);
+    }
 
-    <!-- Phase 3 -->
-    <h3 style="color:#38bdf8; margin-top:1.5rem;">Phase 3: Financial Inclusion & Mobile Apps (Q1 - Q2 2027)</h3>
-    <ul style="font-size:1rem; color:#666; line-height:1.7; padding-left:1rem;">
-      <li>• Launch $SHWE-PAY non-custodial wallet (iOS/Android) with Burmese language interface.</li>
-      <li>• Deploy real-time transparency dashboards for the 30/40/30 reserve model.</li>
-      <li>• Launch low-fee cross-border remittance corridor for Myanmar overseas workers.</li>
-    </ul>
+    nav a {
+      margin-left: 1.2rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s ease, transform 0.15s ease;
+    }
 
-    <!-- Phase 4 -->
-    <h3 style="color:#38bdf8; margin-top:1.5rem;">Phase 4: Scaling & Institutional Integration (Q3 - Q4 2027)</h3>
-    <ul style="font-size:1rem; color:#666; line-height:1.7; padding-left:1rem;">
-      <li>• Secure listings on Tier‑1 centralized exchanges (CEX) to expand global liquidity.</li>
-      <li>• Introduce DeFi micro-lending using $SHWE as collateral for small businesses.</li>
-      <li>• Expand SHWE‑PAY services to emerging Southeast Asian markets facing financial friction.</li>
-    </ul>
-  </div>
-</section>
+    nav a:hover {
+      color: var(--accent-soft);
+      transform: translateY(-1px);
+    }
 
-<!-- HOW TO BUY -->
-<section id="how-to-buy" class="hero">
-  <div>
-    <h2>How to Buy</h2>
-    <ul>
-      <li>Install a Solana wallet (Phantom, Solflare, etc.).</li>
-      <li>Fund it with SOL from a centralized exchange.</li>
-      <li>Go to Raydium and connect your wallet.</li>
-      <li>
-        Paste the SHWE-PAY contract address:<br>
-        <span style="font-family:monospace; color:#facc15;">
-          AFBuHorDPnseM2NQNrmFtPBaJUYuKNHksTJw4nfpyeQW
-        </span>
-      </li>
-      <li>Swap SOL for $SHWE.</li>
-    </ul>
-  </div>
-</section>
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.55rem 1.2rem;
+      border-radius: 999px;
+      border: 1px solid rgba(245, 179, 1, 0.6);
+      background: radial-gradient(circle at top left, #f8d56a 0, #f5b301 40%, #c98a00 100%);
+      color: #050816;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-decoration: none;
+      box-shadow: 0 0 18px rgba(245, 179, 1, 0.5);
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      white-space: nowrap;
+    }
 
-<!-- COMMUNITY & LINKS -->
-<section id="community" class="hero">
-  <div>
-    <h2>Community & Links</h2>
-    <ul style="list-style:none; padding-left:0;">
-      <li><strong>Twitter/X:</strong> @ShwePayOfficial</li>
-      <li><strong>Telegram:</strong> https://t.me/SHWE_PAY_Official/1</li>
-      <li><strong>Email:</strong> contact@shwepay.com</li>
-      <li><strong>Phone:</strong> 804‑380‑9886</li>
-      <li><strong>Solana Wallet:</strong>
-        <span style="font-family:monospace;">
-          7YBqjiZtKjCzdrPdrrGqx5Yh4WaKV5s4szgi3h6SJyUD
-        </span>
-      </li>
-    </ul>
-  </div>
-</section>
+    .btn:hover {
+      transform: translateY(-1px) scale(1.01);
+      box-shadow: 0 0 26px rgba(245, 179, 1, 0.7);
+    }
 
-<footer>
-  © 2026 SHWE-PAY. All rights reserved.
-</footer>
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 3.5rem;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 2.5rem;
+      align-items: center;
+      padding: 2.5rem 0 3rem;
+    }
+
+    .eyebrow {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-soft);
+      font-weight: 600;
+      margin-bottom: 0.7rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 4vw, 3.1rem);
+      line-height: 1.1;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(120deg, #f8d56a, #f5b301, #ffefb0);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      color: var(--muted);
+      font-size: 0.98rem;
+      max-width: 32rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-kpis {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.4rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .kpi {
+      min-width: 120px;
+    }
+
+    .kpi strong {
+      display: block;
+      font-size: 1.1rem;
+      color: var(--accent-soft);
+    }
+
+    .kpi span {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .ghost {
+      border-radius: 999px;
+      border: 1px solid rgba(160, 160, 184, 0.6);
+      padding: 0.5rem 1.1rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      background: transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-decoration: none;
+      transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+    }
+
+    .ghost:hover {
+      border-color: rgba(245, 179, 1, 0.7);
+      color: var(--accent-soft);
+      background: rgba(245, 179, 1, 0.04);
+    }
+
+    .hero-visual {
+      position: relative;
+      padding: 1.8rem;
+      border-radius: 1.6rem;
+      background: radial-gradient(circle at top, rgba(245, 179, 1, 0.12), transparent 55%),
+                  linear-gradient(145deg, rgba(255, 255, 255, 0.04), rgba(5, 8, 22, 0.9));
+      border: 1px solid rgba(245, 179, 1, 0.18);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+      overflow: hidden;
+    }
+
+    .coin {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      margin: 0 auto 1.4rem;
+      background: radial-gradient(circle at 30% 20%, #fff7d1 0, #f8d56a 30%, #f5b301 60%, #c98a00 100%);
+      box-shadow:
+        0 0 40px rgba(245, 179, 1, 0.7),
+        0 0 0 1px rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .coin::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.35);
+    }
+
+    .coin span {
+      position: relative;
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: #3b2600;
+      text-shadow: 0 2px 4px rgba(255, 255, 255, 0.4);
+    }
+
+    .chip {
+      position: absolute;
+      right: 1.4rem;
+      top: 1.4rem;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(5, 8, 22, 0.9);
+      border: 1px solid rgba(245, 179, 1, 0.5);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent-soft);
+    }
+
+    .stat-card {
+      margin-top: 0.6rem;
+      padding: 0.7rem 0.9rem;
+      border-radius: 1rem;
+      background: rgba(5, 8, 22, 0.9);
+      border: 1px solid rgba(245, 179, 1, 0.18);
+      display: flex;
+      justify-content: space-between;
+      gap: 0.8rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .stat-card strong {
+      display: block;
+      color: var(--accent-soft);
+      font-size: 0.9rem;
+    }
+
+    /* Sections */
+    section {
+      padding: 2.4rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    section h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.4rem;
+    }
+
+    section p.lead {
+      color: var(--muted);
+      font-size: 0.9rem;
+      max-width: 34rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    .card {
+      padding: 1.1rem 1rem;
+      border-radius: 1rem;
+      background: rgba(5, 8, 22, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      font-size: 0.9rem;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+      color: var(--accent-soft);
+    }
+
+    .tokenomics-list li,
+    .roadmap-list li {
+      margin-bottom: 0.4rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .tokenomics-list strong,
+    .roadmap-list strong {
+      color: var(--text);
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(245, 179, 1, 0.12);
+      color: var(--accent-soft);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.4rem;
+    }
+
+    .footer {
+      padding-top: 2rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.8rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      margin-top: 2rem;
+    }
+
+    .footer a {
+      color: var(--accent-soft);
+      text-decoration: none;
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-visual {
+        order: -1;
+      }
+      nav a {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .grid-3 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      main {
+        padding-inline: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header id="top">
+    <div class="nav">
+      <div class="logo">
+        <div class="logo-mark">S</div>
+        <span>Shwe Pay</span>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#tokenomics">Tokenomics</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#contact">Community</a>
+        <a href="#buy" class="btn">Buy SPT</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Digital payments, reimagined on-chain</div>
+        <h1>
+          Meet <span>Shwe Pay Token</span><br />
+          the gold standard of everyday crypto.
+        </h1>
+        <p class="hero-sub">
+          Shwe Pay Token (SPT) is a fast, low‑fee utility token designed for real‑world payments,
+          remittances, and rewards—built for emerging markets, ready for global scale.
+        </p>
+
+        <div class="hero-kpis">
+          <div class="kpi">
+            <strong>1,000,000,000</strong>
+            <span>Total Supply</span>
+          </div>
+          <div class="kpi">
+            <strong>&lt; 1s</strong>
+            <span>Avg. Finality</span>
+          </div>
+          <div class="kpi">
+            <strong>$SPT</strong>
+            <span>Utility Token</span>
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#buy" class="btn">Get SPT</a>
+          <a href="#whitepaper" class="ghost">
+            View Litepaper
+            <span>↗</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="chip">Live on Testnet</div>
+        <div class="coin">
+          <span>SP</span>
+        </div>
+        <div class="stat-card">
+          <div>
+            <span>24h Volume</span>
+            <strong>$0.00</strong>
+          </div>
+          <div>
+            <span>Holders</span>
+            <strong>Coming soon</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <h2>What is Shwe Pay Token?</h2>
+      <p class="lead">
+        Shwe Pay Token is built to make digital payments feel as simple as cash—instant, borderless,
+        and accessible. Whether it’s peer‑to‑peer transfers, merchant payments, or loyalty rewards,
+        SPT is the core asset powering the Shwe Pay ecosystem.
+      </p>
+
+      <div class="grid-3">
+        <div class="card">
+          <span class="pill">Utility first</span>
+          <h3>Real payment use cases</h3>
+          <p>
+            SPT is designed for everyday transactions: tipping, micro‑payments, subscriptions, and
+            cross‑border remittances with predictable, low fees.
+          </p>
+        </div>
+        <div class="card">
+          <span class="pill">Accessible</span>
+          <h3>Mobile‑first experience</h3>
+          <p>
+            Integrated with mobile wallets and QR payments so users can send and receive SPT without
+            needing to understand complex crypto tooling.
+          </p>
+        </div>
+        <div class="card">
+          <span class="pill">Ecosystem</span>
+          <h3>Merchants & partners</h3>
+          <p>
+            A growing network of merchants, platforms, and fintech partners can accept SPT and
+            integrate it into their own products.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tokenomics -->
+    <section id="tokenomics">
+      <h2>Tokenomics</h2>
+      <p class="lead">
+        A transparent, utility‑driven token model designed to reward early adopters, support long‑term
+        development, and keep fees low for real users.
+      </p>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>Supply & distribution</h3>
+          <ul class="tokenomics-list">
+            <li><strong>Total supply:</strong> 1,000,000,000 SPT</li>
+            <li><strong>Community & rewards:</strong> 40%</li>
+            <li><strong>Liquidity & market making:</strong> 20%</li>
+            <li><strong>Team & advisors:</strong> 15% (vesting)</li>
+            <li><strong>Treasury & ecosystem:</strong> 25%</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Utility</h3>
+          <ul class="tokenomics-list">
+            <li><strong>Payments:</strong> Pay merchants and peers with low fees.</li>
+            <li><strong>Rewards:</strong> Earn SPT for using partner apps.</li>
+            <li><strong>Fees:</strong> Discounted fees inside the Shwe Pay ecosystem.</li>
+            <li><strong>Access:</strong> Unlock premium features and partner perks.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Stability & governance</h3>
+          <ul class="tokenomics-list">
+            <li><strong>Vesting:</strong> Team tokens unlock gradually.</li>
+            <li><strong>Community voice:</strong> Governance proposals for key upgrades.</li>
+            <li><strong>Treasury:</strong> Funds ecosystem growth and integrations.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Roadmap -->
+    <section id="roadmap">
+      <h2>Roadmap</h2>
+      <p class="lead">
+        Shwe Pay Token is rolling out in focused phases—starting with core infrastructure, then
+        expanding into real‑world payments and partnerships.
+      </p>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>Phase 1 — Foundation</h3>
+          <ul class="roadmap-list">
+            <li><strong>Token launch</strong> on testnet</li>
+            <li><strong>Smart contract audits</strong> initiated</li>
+            <li><strong>Litepaper</strong> and documentation</li>
+            <li><strong>Early community</strong> and social channels</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Phase 2 — Payments</h3>
+          <ul class="roadmap-list">
+            <li><strong>Mainnet deployment</strong> of SPT</li>
+            <li><strong>Wallet integrations</strong> (mobile & web)</li>
+            <li><strong>Merchant pilot</strong> with QR payments</li>
+            <li><strong>Rewards program</strong> for early users</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Phase 3 — Ecosystem</h3>
+          <ul class="roadmap-list">
+            <li><strong>Regional expansion</strong> in key markets</li>
+            <li><strong>DeFi integrations</strong> for liquidity</li>
+            <li><strong>Partner APIs</strong> for fintechs</li>
+            <li><strong>Community governance</strong> activation</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Buy / Links -->
+    <section id="buy">
+      <h2>How to get Shwe Pay Token</h2>
+      <p class="lead">
+        SPT will be available on selected exchanges and through in‑app purchases inside the Shwe Pay
+        ecosystem. Until then, you can follow development and join the early community.
+      </p>
+
+      <div class="card">
+        <h3>Planned access points</h3>
+        <ul class="tokenomics-list">
+          <li><strong>Centralized exchanges:</strong> Tier‑2 listings (TBA)</li>
+          <li><strong>Decentralized exchanges:</strong> Liquidity pools on major DEXs</li>
+          <li><strong>In‑app:</strong> Buy SPT directly in the Shwe Pay app</li>
+        </ul>
+        <p style="margin-top:0.6rem;font-size:0.85rem;color:var(--muted);">
+          This page is for informational and demo purposes only. Always do your own research and
+          comply with local regulations.
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact / Community -->
+    <section id="contact">
+      <h2>Join the Shwe Pay community</h2>
+      <p class="lead">
+        Be part of the earliest wave shaping how Shwe Pay Token grows—feedback, ideas, and builders
+        are all welcome.
+      </p>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>Social</h3>
+          <p>
+            Follow our official channels for announcements, AMAs, and roadmap updates.
+          </p>
+          <ul class="tokenomics-list">
+            <li><strong>Twitter / X:</strong> @shwepaytoken</li>
+            <li><strong>Telegram:</strong> t.me/shwepay</li>
+            <li><strong>Discord:</strong> Shwe Pay Hub</li>
+          </ul>
+        </div>
+        <div class="card" id="whitepaper">
+          <h3>Docs & litepaper</h3>
+          <p>
+            Host your litepaper and technical docs and link them here so investors and users can
+            understand the vision and mechanics.
+          </p>
+          <ul class="tokenomics-list">
+            <li><strong>Litepaper:</strong> /docs/litepaper.pdf</li>
+            <li><strong>Developers:</strong> /docs/api</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Contact</h3>
+          <p>
+            For partnerships, integrations, or media inquiries:
+          </p>
+          <ul class="tokenomics-list">
+            <li><strong>Email:</strong> hello@shwepay.io</li>
+            <li><strong>Business:</strong> partners@shwepay.io</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>© <span id="year"></span> Shwe Pay Token. All rights reserved.</span>
+      <span>
+        <a href="#top">Back to top ↑</a>
+      </span>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
